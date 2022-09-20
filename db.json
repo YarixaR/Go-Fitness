@@ -1,0 +1,92 @@
+{
+  "exercise": [
+      {
+          "id": 1,
+          "bodyPart": "waist",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0001.gif",
+          "name": "3/4 sit-up",
+          "target": "abs"
+      },
+      {
+          "id": 2,
+          "bodyPart": "waist",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0002.gif",
+          "name": "45° side bend",
+          "target": "abs"
+      },
+      {
+          "id": 3,
+          "bodyPart": "waist",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0003.gif",
+          "name": "air bike",
+          "target": "abs"
+      },
+      {
+          "id": 4,
+          "bodyPart": "upper legs",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1512.gif",
+          "name": "all fours squad stretch",
+          "target": "quads"
+      },
+      {
+          "id": 5,
+          "bodyPart": "waist",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0006.gif",
+          "name": "alternate heel touchers",
+          "target": "abs"
+      },
+      {
+          "id": 6,
+          "bodyPart": "lower legs",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3293.gif",
+          "name": "archer pull up",
+          "target": "lats"
+      },
+      {
+          "id": 7,
+          "bodyPart": "lower legs",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1368.gif",
+          "name": "ankle circles",
+          "target": "calves"
+      },
+      {
+          "id": 8,
+          "bodyPart": "back",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3293.gif",
+          "name": "archer pull up",
+          "target": "lats"
+      },
+      {
+          "id": 9,
+          "bodyPart": "chest",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3294.gif",
+          "name": "archer push up",
+          "target": "pectorals"
+      },
+      {
+          "id": 10,
+          "bodyPart": "waist",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/2355.gif",
+          "name": "arm slingers hanging bent knee legs",
+          "target": "abs"
+      },
+      {
+          "id": 11,
+          "bodyPart": "waist",
+          "equipment": "body weight",
+          "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/2333.gif",
+          "name": "arm slingers hanging straight legs",
+          "target": "abs"
+      }
+  ]
+}
