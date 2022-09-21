@@ -5,6 +5,8 @@ import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Signup from './components/SignUp';
 import Home from './components/Home';
+import Abs from './components/Abs';
+import Quads from './components/Quads';
 
 function App() {
 
@@ -22,14 +24,14 @@ function App() {
     <Switch>
         {/* <Route exact path="/user/:id">
           <Log />
-        </Route>
+        </Route> */}
         <Route exact path="/abs">
-          <Abs />
+          <Abs exercise={ exercise }/>
         </Route>
-        <Route exact path="/legs">
-          <Legs />
+        <Route exact path="/quads">
+          <Quads exercise={ exercise } />
         </Route>
-        <Route exact path="/back">
+        {/* <Route exact path="/back">
           <Back />
         </Route>
         <Route exact path="/chest">

@@ -9,6 +9,7 @@ function LandingPage() {
             <Link to={'/signup'}>Register</Link>
             </div>
             <Link to={'/login'}>Sign in</Link>
+            
         </div>
     )
 }

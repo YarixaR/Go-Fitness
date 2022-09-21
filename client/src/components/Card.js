@@ -32,3 +32,16 @@ function Card({ id, bodyPart, equipment, gifUrl, name, target }) {
 }
 
 export default Card;
+
+
+    // const exerciseCard = exercise.map(ex =>{
+    //     return <Card 
+    //     key = {ex.id}
+    //     id = {ex.id}
+    //     bodyPart = {ex.bodyPart}
+    //     equipment = {ex.equipment}
+    //     gifUrl = {ex.gifUrl}
+    //     name = {ex.name}
+    //     target = {ex.target}
+    //     />
+    // })
