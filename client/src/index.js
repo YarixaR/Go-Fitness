@@ -5,12 +5,12 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 
 
-const Rooter = () =>  <BrowserRouter><App /></BrowserRouter>
+// const Rooter = () =>  <BrowserRouter><App /></BrowserRouter>
 
 ReactDOM.render(
-  <React.StrictMode>
-   <Rooter />
-  </React.StrictMode>,
+  <BrowserRouter>
+   <App />
+   </BrowserRouter>,
   document.getElementById('root')
 );
 

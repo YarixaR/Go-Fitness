@@ -10,7 +10,15 @@ import Quads from './components/Quads';
 
 function App() {
 
+
   const [ exercise, setExercise ] = useState([])
+  const [ userData, setUserData ] = useState([])
+  const [errors, setErrors] = useState([])
+
+  const handleUser = () => {
+    setUserData()
+  }
+
 
   // useEffect(() => {
   //   fetch('/all_exercises')
@@ -22,11 +30,23 @@ function App() {
 //! Test data
   useEffect(() => {
     fetch('/all_exercises')
-    .then(resp => resp.json())
-    .then(data => setExercise(data))
-  
-  },[])
+    .then((res) => {
+      if (res.ok) {
+        res.json().then((data => setExercise(data)))
+      }
+  })}, [])
 
+
+  useEffect(() => {
+    fetch("/me").then((res) => {
+        if (res.ok) {
+            res.json().then((data) => {
+              setUserData(data);
+            });
+        }else {res.json().then((json) => setErrors(json.errors))}
+    });
+}, []);
+console.log(errors)
 
 
   return (
@@ -53,7 +73,7 @@ function App() {
           <Signup />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login handleUser={ handleUser } />
         </Route>
        <Route exact path="/">
           <LandingPage/>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # get 'sessions/create'
   # get 'sessions/destroy'
-  # get '/me', to: "users#show"
+  get '/me', to: "users#show"
 
   resources :logs
   resources :exercises
