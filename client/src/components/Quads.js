@@ -1,6 +1,6 @@
 
 import NavBar from './NavBar';
-import Card from './Card';
+import FitCard from './FitCard';
 
 function Quads({ exercise }) {
 
@@ -9,7 +9,7 @@ function Quads({ exercise }) {
         <div>
             <NavBar />
             <div>
-                {exercise.map(quads => quads.target == "quads" ? <Card 
+                {exercise.map(quads => quads.target == "quads" ? <FitCard 
                     key = {quads.id}
                     id = {quads.id}
                     bodyPart = {quads.bodyPart}

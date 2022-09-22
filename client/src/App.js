@@ -12,10 +12,19 @@ function App() {
 
   const [ exercise, setExercise ] = useState([])
 
+  // useEffect(() => {
+  //   fetch('/all_exercises')
+  //   .then(resp => resp.json())
+  //   .then(data => setExercise(data))
+  //   .catch(err => console.error(err));
+  // },[])
+
+//! Test data
   useEffect(() => {
-    fetch("http://localhost:3000/exercise")
+    fetch('/all_exercises')
     .then(resp => resp.json())
     .then(data => setExercise(data))
+  
   },[])
 
 
