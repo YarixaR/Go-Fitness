@@ -12,9 +12,18 @@ import CardMedia from '@mui/material/CardMedia';
 function FitCard({ id, bodyPart, equipment, gifUrl, name, target }) {
 
     const [isClicked, setIsClicked] = useState(false)
+    const [ form, setForm ] = useState({})
 
     const handleImage = () => {
         setIsClicked(isClicked => !isClicked)
+    }
+
+    const handleChange = e => 
+    setForm( pF => ({ ...pF, [ e.target.name ]: e.target.value }) )
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        console.log( 'hello', form )
     }
 
     return(
@@ -32,20 +41,21 @@ function FitCard({ id, bodyPart, equipment, gifUrl, name, target }) {
                 <Typography variant="body2" color="text.secondary">Targeted muscle: { target }</Typography>
                 <Typography variant="body2" color="text.secondary">Equipment: { equipment }</Typography>
                 </CardContent>
-                {isClicked
-                 ? <Box
+                {isClicked ? 
+                 <Box
                     component="form"
+                    onSubmit={handleSubmit}
                     sx={{
                         '& > :not(style)': { m: 1, width: '10ch' },
                         color: 'text.primary'
                     }}
                     noValidate
                     autoComplete="off"
-                 >
-                    <TextField id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
-                    <TextField id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
-                    <TextField id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
-                    <Button variant="outlined" size="small">Log</Button>
+                    >
+                    <TextField onChange={handleChange} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
+                    <TextField onChange={handleChange} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
+                    <TextField onChange={handleChange} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
+                    <Button type = "submit" variant="outlined" size="small">Log</Button>
                 </Box> 
                 : null
                 }

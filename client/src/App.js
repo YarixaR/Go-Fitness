@@ -19,22 +19,24 @@ function App() {
     setUserData()
   }
 
-
-  // useEffect(() => {
-  //   fetch('/all_exercises')
-  //   .then(resp => resp.json())
-  //   .then(data => setExercise(data))
-  //   .catch(err => console.error(err));
-  // },[])
-
-//! Test data
+//! Official Fetch
   useEffect(() => {
     fetch('/all_exercises')
-    .then((res) => {
-      if (res.ok) {
-        res.json().then((data => setExercise(data)))
-      }
-  })}, [])
+    .then(resp => resp.json())
+    .then(data => setExercise(data))
+    .catch(err => console.error(err));
+  },[])
+
+  console.log(exercise)
+
+//* DB.JSON data
+  // useEffect(() => {
+  //   fetch('/all_exercises')
+  //   .then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((data => setExercise(data)))
+  //     }
+  // })}, [])
 
 
   useEffect(() => {
@@ -46,7 +48,7 @@ function App() {
         }else {res.json().then((json) => setErrors(json.errors))}
     });
 }, []);
-console.log(errors)
+
 
 
   return (
