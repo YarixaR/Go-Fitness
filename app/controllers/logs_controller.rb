@@ -15,8 +15,18 @@ class LogsController < ApplicationController
   
     # POST '/logs'
     def create
-      log = Log.create!(log_params)
-      render json: log, status: :created
+      user = current_user
+      exercise = Exercise.find_or_create_by( exercise_params)
+
+      log = Log.new( log_params )
+      log.user_id = user.id
+      log.exercise_id = exercise.id
+      log.save
+
+      render json: log
+
+      # log = Log.create!(log_params)
+      # render json: log, status: :created
     end
   
     # PATCH '/logs/:id'
@@ -39,7 +49,11 @@ class LogsController < ApplicationController
     end
   
     def log_params
-      params.permit(:sets, :reps, :weight)
+      params.permit(:sets, :reps, :weight, :user_id, :exercise_id)
+    end
+
+    def exercise_params
+      params.permit(:bodyPart, :equipment, :gifURL, :name, :target)
     end
   
     def render_unprocessable_entity_response(exception)

@@ -9,7 +9,7 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardMedia from '@mui/material/CardMedia';
 
-function FitCard({ id, bodyPart, equipment, gifUrl, name, target }) {
+function FitCard({ id, bodyPart, equipment, gifUrl, name, target, handleAddLogs, userId }) {
 
     const [isClicked, setIsClicked] = useState(false)
     const [ form, setForm ] = useState({})
@@ -23,17 +23,32 @@ function FitCard({ id, bodyPart, equipment, gifUrl, name, target }) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log( 'hello', form )
+        
+        const infoToSend = {
+            ...form,
+            bodyPart,
+            equipment,
+            gifUrl,
+            name,
+            target
+        }
+
+        console.log(infoToSend)
+
+        fetch( '/logs', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify( infoToSend )
+        } )
+            .then( r => r.json() )
+            .then(console.log)
     }
+
 
     return(
         <div>
             <Grid >
             <Card sx={{ display: 'flex',gap: 4,'--Card-padding': (theme) => theme.spacing(9), }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-            {/* <Stack direction="row" spacing={1}> */}
-            
-            {/* <img onClick={ handleImage } src={gifUrl} alt="gif"/> */}
             <div>
                 <CardContent>
                 <Typography gutterBottom variant="h6" component="div">{ name }</Typography>
@@ -60,7 +75,6 @@ function FitCard({ id, bodyPart, equipment, gifUrl, name, target }) {
                 : null
                 }
             </div>
-            {/* </Stack> */}
             </Box>
             <CardMedia
                 onClick={ handleImage } 

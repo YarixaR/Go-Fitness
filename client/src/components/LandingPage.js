@@ -4,12 +4,6 @@ import battlerope2 from '../assets/battlerope2.mp4'
 function LandingPage() {
 
 
-    
-    // fetch('/all_exercises')
-    //     .then(response => response.json())
-    //     .then(response => console.log(response))
-    //     .catch(err => console.error(err));
-
     return(
         <div className='landing-page'>
             <div className='overlay'></div>

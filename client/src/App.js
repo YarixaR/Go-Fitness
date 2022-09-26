@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Signup from './components/SignUp';
 import Home from './components/Home';
+import Log from './components/Log';
 import Abs from './components/Abs';
 import Quads from './components/Quads';
 
@@ -14,6 +15,8 @@ function App() {
   const [ exercise, setExercise ] = useState([])
   const [ userData, setUserData ] = useState([])
   const [errors, setErrors] = useState([])
+  const [ userId, setUserId ] = useState(0)
+  const [ logs, setLogs ] = useState([])
 
   const handleUser = () => {
     setUserData()
@@ -25,7 +28,7 @@ function App() {
     .then(resp => resp.json())
     .then(data => setExercise(data))
     .catch(err => console.error(err));
-  },[])
+  },[ ])
 
   console.log(exercise)
 
@@ -49,18 +52,36 @@ function App() {
     });
 }, []);
 
+useEffect(() => {
+  fetch(`/users/${userId}`)
+  .then((res) => res.json())
+  .then((data) => setUserData(data))
+}, [])
+
+  useEffect(() => {
+    fetch('/logs')
+    .then((res) => res.json())
+    .then((data) => setLogs(data))
+  }, [])
+
+  const handleAddLogs = (addedLog) => {
+    setLogs(oldLogs =>[...oldLogs, addedLog])
+    
+  }
+
+
 
 
   return (
     <Switch>
-        {/* <Route exact path="/user/:id">
-          <Log />
-        </Route> */}
+        <Route exact path="/user/:id">
+          <Log exercise={ exercise } logs={ logs } />
+        </Route>
         <Route exact path="/abs">
-          <Abs exercise={ exercise }/>
+          <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData.id} />
         </Route>
         <Route exact path="/quads">
-          <Quads exercise={ exercise } />
+          <Quads exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData.id} />
         </Route>
         {/* <Route exact path="/back">
           <Back />
@@ -69,7 +90,7 @@ function App() {
           <Chest />
         </Route> */}
         <Route path="/home">
-          <Home exercise={ exercise }/>
+          <Home exercise={ exercise } />
         </Route>
         <Route path="/signup">
           <Signup />

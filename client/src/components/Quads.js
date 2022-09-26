@@ -2,7 +2,7 @@
 import NavBar from './NavBar';
 import FitCard from './FitCard';
 
-function Quads({ exercise }) {
+function Quads({ exercise, handleAddLogs, userId }) {
 
 
     return(
@@ -17,6 +17,8 @@ function Quads({ exercise }) {
                     gifUrl = {quads.gifUrl}
                     name = {quads.name}
                     target = {quads.target}
+                    handleAddLogs={handleAddLogs}
+                    userId={ userId }
                 
                 /> : null
                 )
