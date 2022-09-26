@@ -9,7 +9,7 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardMedia from '@mui/material/CardMedia';
 
-function FitCard({ id, bodyPart, equipment, gifUrl, name, target, handleAddLogs, userId }) {
+function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, handleAddLogs, userId }) {
 
     const [isClicked, setIsClicked] = useState(false)
     const [ form, setForm ] = useState({})
@@ -40,7 +40,8 @@ function FitCard({ id, bodyPart, equipment, gifUrl, name, target, handleAddLogs,
             body: JSON.stringify( infoToSend )
         } )
             .then( r => r.json() )
-            .then(console.log)
+            .then(data => handleAddLogs(data))
+            e.target.reset()
     }
 
 

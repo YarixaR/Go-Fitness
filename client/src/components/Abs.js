@@ -25,6 +25,7 @@ function Abs({ exercise, handleAddLogs, userId}) {
                             target = {abs.target}
                             handleAddLogs={handleAddLogs}
                             userId={userId}
+                            exercise={exercise}
 
                         
                         /> : null

@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
     # skip_before_action :authenticate_user, only: :create
 
+    def index
+      u = User.all
+      render json: u
+    end
+
     # Making a new account
     def create
       
@@ -13,7 +18,7 @@ class UsersController < ApplicationController
     def show
       
       if current_user
-        render json: current_user, status: :ok
+        render json: current_user, status: :ok, include: ['logs', 'logs.exercise']
       else
         render json: { errors: "No current session stored" }, status: :unauthorized
       end

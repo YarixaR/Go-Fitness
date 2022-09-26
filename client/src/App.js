@@ -1,5 +1,5 @@
 import './stylesheets/App.css';
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useInsertionEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
@@ -8,29 +8,39 @@ import Home from './components/Home';
 import Log from './components/Log';
 import Abs from './components/Abs';
 import Quads from './components/Quads';
+import { useParams } from 'react-router-dom'
 
 function App() {
 
 
   const [ exercise, setExercise ] = useState([])
-  const [ userData, setUserData ] = useState([])
+  const [ userData, setUserData ] = useState('')
   const [errors, setErrors] = useState([])
-  const [ userId, setUserId ] = useState(0)
+  // const [ userId, setUserId ] = useState(0)
   const [ logs, setLogs ] = useState([])
 
   const handleUser = () => {
     setUserData()
   }
 
-//! Official Fetch
-  useEffect(() => {
-    fetch('/all_exercises')
-    .then(resp => resp.json())
-    .then(data => setExercise(data))
-    .catch(err => console.error(err));
-  },[ ])
+  // console.log(userData)
 
-  console.log(exercise)
+//! Official Fetch
+  const getExercises = () => {
+    fetch('/all_exercises')
+      .then(resp => resp.json())
+      .then(data => setExercise(data))
+      .catch(err => console.error(err));
+  }
+
+  useEffect(() => {getExercises()}, [])
+
+  const handleRemove = () => {
+    getExercises()
+  
+  }
+
+  // console.log(exercise)
 
 //* DB.JSON data
   // useEffect(() => {
@@ -52,11 +62,8 @@ function App() {
     });
 }, []);
 
-useEffect(() => {
-  fetch(`/users/${userId}`)
-  .then((res) => res.json())
-  .then((data) => setUserData(data))
-}, [])
+// console.log(userData)
+
 
   useEffect(() => {
     fetch('/logs')
@@ -66,22 +73,36 @@ useEffect(() => {
 
   const handleAddLogs = (addedLog) => {
     setLogs(oldLogs =>[...oldLogs, addedLog])
-    
+  }
+
+  const renderingNewLogs = (updatedLog) => {
+    const updatedResource = logs
+    ? logs.map((log) => {
+      if (log.id === updatedLog.id) {
+        return updatedLog
+      } else {return log}
+    }) : null
+    setLogs(updatedResource)
   }
 
 
-
+  const renderingWithoutDeleted = (deletedLog) => {
+    const updatedLog = logs?.filter((log) => {
+      if (log.id !== deletedLog.id) return true
+    })
+    setLogs(updatedLog)
+  }
 
   return (
     <Switch>
-        <Route exact path="/user/:id">
-          <Log exercise={ exercise } logs={ logs } />
+        <Route exact path="/me">
+          <Log exercise={ exercise } logs={ logs }  userData={userData} handleRemove={handleRemove}/>
         </Route>
         <Route exact path="/abs">
-          <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData.id} />
+          <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/quads">
-          <Quads exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData.id} />
+          <Quads exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         {/* <Route exact path="/back">
           <Back />

@@ -14,8 +14,8 @@ function NavBar() {
 
     return(
         <div>
-            <NavLink exact to = "/home" className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">Home</NavLink>
-            <NavLink exact to = "/user/:id" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Log</NavLink>
+            <NavLink exact to = "/home">Home</NavLink>
+            <NavLink exact to = "/me">My Log</NavLink>
             <a href="#" onClick={ handleLogOut }>Sign out</a> 
         </div>
     )
