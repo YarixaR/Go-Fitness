@@ -1,4 +1,5 @@
 import Log from "./Log";
+import NavBar from "./NavBar";
 
 
 
@@ -17,6 +18,7 @@ function LogContainer({ userData, handleRemove, handleUpdate, fetchCurrentUser})
  
     return (
         <div>
+            <NavBar />
          {userData.logs?.map(log => <Log 
             key = {log.id}
             log = {log}
