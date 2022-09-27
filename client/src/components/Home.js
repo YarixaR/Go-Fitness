@@ -22,12 +22,11 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
       const img4 =  'https://mennohenselmans.com/wp-content/uploads/2020/09/bb-bp.jpg'
       const title4 = 'Chest'
 
-      const img5 =  'https://manofmany.com/wp-content/uploads/2020/02/Best-Calf-Exercises.jpg'
-      const title5 = 'Calves'
+      const img5 =  'https://hips.hearstapps.com/hmg-prod/images/treadmill-testing-0438-1585840395.jpg?crop=0.668xw:1.00xh;0.180xw,0&resize=640:*'
+      const title5 = 'Cardio'
 
       const img6 =  'https://www.muscleandfitness.com/wp-content/uploads/2019/02/1109-Barbell-Back-Squat-GettyImages-614107160.jpg?w=1109&h=614&crop=1&quality=86&strip=all'
-      const title6 = 'Upper Legs'
-
+      const title6 = 'Quads'
       
 
 function Home({exercise}) {
@@ -36,10 +35,27 @@ function Home({exercise}) {
 
     const navigateToAbs = () => {
         history.push('/abs')
-      }
+    }
 
     const navigateToQuads = () => {
-    history.push('/quads')
+        history.push('/quads')
+    }
+
+    const navigateToBack = () => {
+        history.push('/back')
+    }
+
+    const navigateToArms = () => {
+        history.push('/arms')
+    }
+
+    const navigateToChest = () => {
+        history.push('/chest')
+    }
+
+
+    const navigateToCardio = () => {
+        history.push('/cardio')
     }
 
 
@@ -59,22 +75,22 @@ function Home({exercise}) {
                 </ImageListItem>
 
                 <ImageListItem key={img2}>
-                <img src={img2} alt={title2}/>
+                <img onClick = { navigateToArms } src={img2} alt={title2}/>
                 <ImageListItemBar title={title2}/>
                 </ImageListItem>
 
                 <ImageListItem key={img3}>
-                <img src={img3} alt={title3}/>
+                <img onClick = { navigateToBack } src={img3} alt={title3}/>
                 <ImageListItemBar title={title3}/>
                 </ImageListItem>
 
                 <ImageListItem key={img4}>
-                <img src={img4} alt={title4}/>
+                <img onClick = { navigateToChest } src={img4} alt={title4}/>
                 <ImageListItemBar title={title4}/>
                 </ImageListItem>
 
                 <ImageListItem key={img5}>
-                <img src={img5} alt={title5}/>
+                <img onClick = { navigateToCardio } src={img5} alt={title5}/>
                 <ImageListItemBar title={title5}/>
                 </ImageListItem>
 

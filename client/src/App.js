@@ -8,6 +8,10 @@ import Home from './components/Home';
 // import Log from './components/Log';
 import Abs from './components/Abs';
 import Quads from './components/Quads';
+import Back from './components/Back';
+import UpperArms from './components/UpperArms';
+import Chest from './components/Chest';
+import Cardio from './components/Cardio';
 import { useParams } from 'react-router-dom'
 import LogContainer from './components/LogContainer';
 
@@ -17,7 +21,6 @@ function App() {
   const [ exercise, setExercise ] = useState([])
   const [ userData, setUserData ] = useState('')
   const [errors, setErrors] = useState([])
-  // const [ userId, setUserId ] = useState(0)
   const [ logs, setLogs ] = useState([])
 
   const handleUser = () => {
@@ -34,24 +37,15 @@ function App() {
       .catch(err => console.error(err));
   }
 
+  console.log(exercise)
+
   useEffect(() => {getExercises()}, [])
 
   const handleRemove = () => {
     fetchCurrentUser()
-  
   }
 
   // console.log(exercise)
-
-//* DB.JSON data
-  // useEffect(() => {
-  //   fetch('/all_exercises')
-  //   .then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((data => setExercise(data)))
-  //     }
-  // })}, [])
-
 
   useEffect(() => {
     fetchCurrentUser()
@@ -84,37 +78,11 @@ const fetchCurrentUser = () => {
     fetchCurrentUser()
   }
 
-//   const item = logs.map((log) => {
-//     return log
-//   })
-//   const lg = item.map((l) => {
-//     return l
-// })
-
-
-
-
   const handleAddLogs = (addedLog) => {
     setLogs(oldLogs =>[...oldLogs, addedLog])
   }
 
-  // const renderingNewLogs = (updatedLog) => {
-  //   const updatedResource = logs
-  //   ? logs.map((log) => {
-  //     if (log.id === updatedLog.id) {
-  //       return updatedLog
-  //     } else {return log}
-  //   }) : null
-  //   setLogs(updatedResource)
-  // }
 
-
-  // const renderingWithoutDeleted = (deletedLog) => {
-  //   const updatedLog = logs?.filter((log) => {
-  //     if (log.id !== deletedLog.id) return true
-  //   })
-  //   setLogs(updatedLog)
-  // }
 // TODO REMEMBER TO PASS HANDLEUPDATE WHEN YOU OPEN OTHER MUSCLE PATHS
   return (
     <Switch>
@@ -124,15 +92,21 @@ const fetchCurrentUser = () => {
         <Route exact path="/abs">
           <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
         </Route>
+        <Route exact path="/cardio">
+          <Cardio exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+        </Route>
         <Route exact path="/quads">
           <Quads exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
         </Route>
-        {/* <Route exact path="/back">
-          <Back />
+        <Route exact path="/back">
+          <Back exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+        </Route>
+        <Route exact path="/arms">
+          <UpperArms exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
         </Route>
         <Route exact path="/chest">
-          <Chest />
-        </Route> */}
+          <Chest exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+        </Route>
         <Route path="/home">
           <Home exercise={ exercise } />
         </Route>
@@ -150,3 +124,12 @@ const fetchCurrentUser = () => {
 }
 
 export default App;
+
+//* DB.JSON data
+  // useEffect(() => {
+  //   fetch('/all_exercises')
+  //   .then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((data => setExercise(data)))
+  //     }
+  // })}, [])

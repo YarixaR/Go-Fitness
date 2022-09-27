@@ -15,7 +15,7 @@ function Abs({ exercise, handleAddLogs, userId, handleUpdate}) {
             <Container>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 8, md: 12 }}>
                     <Grid item xs={11}>
-                        {exercise.map(abs => abs.target == "abs" ? <FitCard 
+                        {exercise.map(abs => abs.bodyPart == "waist" ? <FitCard 
                             key = {abs.id}
                             id = {abs.id}
                             bodyPart = {abs.bodyPart}

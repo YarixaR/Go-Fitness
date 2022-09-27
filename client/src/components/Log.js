@@ -68,8 +68,7 @@ export default function Log({ log, handleUpdate, handleRemove }) {
         })
         .then(() => {
             handleRemove(log)
-        });
-            
+        }); 
     }
 
     return(
