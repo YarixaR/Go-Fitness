@@ -1,5 +1,5 @@
 import NavBar from "./NavBar";
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef  } from 'react'
 import { useParams } from 'react-router-dom'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,51 +9,60 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
+export default function Log({ exercise, logs, renderingNewLogs, userData, handleRemove }) {
 
-function Log({ exercise, logs, renderingNewLogs, userData, handleRemove }) {
+    const [sets, setSets] = useState('')
+    const [reps, setReps] = useState('')
+    const [weight, setWeight] = useState('')
 
-    // const [user, setUser] = useState()
-    // const [loading, setLoading] = useState(true)
-    const [errors, setErrors] = useState(false)
-    // const {logs} = userData
+    const [existingLogId, setExistingLogId] = useState("")
+  
 
-    // const params = useParams()
-    // const {id} = params
+    const [isClicked, setIsClicked] = useState(false)
+  
+    const refOne = useRef(null)
+  
+    const handleExistingLog = (e, id) => {
+      e.preventDefault()
+      if(refOne.current.contains(e.target)) {
+        setIsClicked(!isClicked)
+        setExistingLogId(id)
+      }
+    }
 
-    // useEffect(()=>{
-    //     fetch(`/me`)
-    //     .then(res => {
-    //         if(res.ok){
-    //             res.json().then(user => {
-    //                 handleUser(user)
+    const handleChangeSets = (e) => {
+        setSets(e.target.value)
+      }
 
-    //             })
-    //         }else {
-    //             res.json().then(data => setErrors(data.error))
-    //         }
-    //     })     
-    // }, [])
-    
+    const handleChangeReps = (e) => {
+        setReps(e.target.value)
+      }
 
+    const handleChangeWeight = (e) => {
+        setWeight(e.target.value)
+      }
 
-    // if(loading) return <h1>Loading</h1>
-    if(errors) return <h1>{errors}</h1>
+    //   console.log(logs.reps)
 
-//! this code deleted without refreshing
-    // const handleDelete = (log) => {
-    //     const id = log.id
-    //     fetch( `/logs/${id}`, {
-    //         method: 'DELETE'
-    //     }).then(() => {
-    //         const newUser = {...userData}
-    //         newUser.exercises = userData.exercises?.filter((ex) => {
-    //             if(ex.id !== log.exercise_id) return true
-    //         })
-    //         handleUser(newUser)
-    //         handleRemove(log)
-    //     })
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetch(`/logs/${logs.id}`, {
+          method: 'PATCH',
+          headers: {"Content-Type": "application/json" },
+          body: JSON.stringify({
+            sets: sets,
+            reps: reps,
+            weight: weight
+
+          })
+        }).then((resp) => resp.json())
+          .then(updatedObj => renderingNewLogs(updatedObj))
+          e.target.reset()
+        }
 
     const handleDelete = (log) => {
         const id = log.id
@@ -84,6 +93,7 @@ function Log({ exercise, logs, renderingNewLogs, userData, handleRemove }) {
                     <TableBody>
                     {userData.logs?.map((log) => (
                         <TableRow
+                        ref={refOne} onClick={e => handleExistingLog(e, log.id)}
                         key={log.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
@@ -102,12 +112,25 @@ function Log({ exercise, logs, renderingNewLogs, userData, handleRemove }) {
                 </Table>
                 </TableContainer>
             </div>
+            {isClicked ? 
+             <Box
+             component="form"
+             onSubmit={handleSubmit}
+             sx={{
+                 '& > :not(style)': { m: 1, width: '10ch' },
+                 color: 'text.primary'
+             }}
+             noValidate
+             autoComplete="off"
+             >
+             <TextField onChange={handleChangeSets} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
+             <TextField onChange={handleChangeReps} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
+             <TextField onChange={handleChangeWeight} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
+             <Button type = "submit" variant="outlined" size="small">Log</Button>
+            </Box> 
+            : null
+        }
         </div>
     )
+
 }
-
-
-export default Log;
-
-
-

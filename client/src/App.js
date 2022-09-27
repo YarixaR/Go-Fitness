@@ -71,6 +71,8 @@ function App() {
     .then((data) => setLogs(data))
   }, [])
 
+  console.log(logs)
+
   const handleAddLogs = (addedLog) => {
     setLogs(oldLogs =>[...oldLogs, addedLog])
   }
@@ -86,17 +88,17 @@ function App() {
   }
 
 
-  const renderingWithoutDeleted = (deletedLog) => {
-    const updatedLog = logs?.filter((log) => {
-      if (log.id !== deletedLog.id) return true
-    })
-    setLogs(updatedLog)
-  }
+  // const renderingWithoutDeleted = (deletedLog) => {
+  //   const updatedLog = logs?.filter((log) => {
+  //     if (log.id !== deletedLog.id) return true
+  //   })
+  //   setLogs(updatedLog)
+  // }
 
   return (
     <Switch>
         <Route exact path="/me">
-          <Log exercise={ exercise } logs={ logs }  userData={userData} handleRemove={handleRemove}/>
+          <Log exercise={ exercise } logs={ logs } userData={userData} handleRemove={handleRemove}/>
         </Route>
         <Route exact path="/abs">
           <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
