@@ -26,7 +26,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
       const title5 = 'Calves'
 
       const img6 =  'https://www.muscleandfitness.com/wp-content/uploads/2019/02/1109-Barbell-Back-Squat-GettyImages-614107160.jpg?w=1109&h=614&crop=1&quality=86&strip=all'
-      const title6 = 'Quads'
+      const title6 = 'Upper Legs'
 
       
 

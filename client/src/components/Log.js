@@ -13,18 +13,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-export default function Log({ exercise, log, handleUpdate, handleRemove }) {
+export default function Log({ log, handleUpdate, handleRemove }) {
 
     const [sets, setSets] = useState('')
     const [reps, setReps] = useState('')
     const [weight, setWeight] = useState('')
-    // const [logItem, setLogItem] = useState({})
-
-
-    // const lg = item.map((l) => {
-    //     return l.id
-    // })
-
     const [existingLogId, setExistingLogId] = useState("")
   
 
@@ -66,7 +59,6 @@ export default function Log({ exercise, log, handleUpdate, handleRemove }) {
           })
         }).then((resp) => resp.json())
           .then(updatedObj => handleUpdate(updatedObj))
-        //   e.target.reset()
         }
 
     const handleDelete = (log) => {
@@ -76,7 +68,6 @@ export default function Log({ exercise, log, handleUpdate, handleRemove }) {
         })
         .then(() => {
             handleRemove(log)
-            // console.log(log)
         });
             
     }
@@ -117,7 +108,6 @@ export default function Log({ exercise, log, handleUpdate, handleRemove }) {
             {isClicked ? 
              <Box
              component="form"
-             onClick={handleSubmit}
              sx={{
                  '& > :not(style)': { m: 1, width: '10ch' },
                  color: 'text.primary'
@@ -128,7 +118,7 @@ export default function Log({ exercise, log, handleUpdate, handleRemove }) {
              <TextField onChange={handleChangeSets} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
              <TextField onChange={handleChangeReps} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
              <TextField onChange={handleChangeWeight} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
-             <Button type = "submit" variant="outlined" size="small" >Update</Button>
+             <Button type = "submit" variant="outlined" size="small" onClick={handleSubmit}>Update</Button>
             </Box> 
             : null
              } 

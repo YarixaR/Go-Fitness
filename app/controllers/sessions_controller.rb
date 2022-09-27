@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         render json: user, status: :ok
       else 
-        render json: { error: "Sorry, we can't find an account with this email and password." },
+        render json: { error: "Sorry, we can't find an account with this email or password." },
         status: :unauthorized
       end
     end

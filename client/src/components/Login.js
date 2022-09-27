@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useHistory } from 'react-router-dom'
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 function Login({handleUser}) {
 
@@ -32,7 +34,7 @@ function Login({handleUser}) {
               history.push(`/home`)
             });
           } else {
-            res.json().then(json => setErrors(Object.entries(json.error)))
+            res.json().then(json => setErrors(json.error))
           }
         });
       };
@@ -51,8 +53,10 @@ function Login({handleUser}) {
                     <input type="text" name='email' placeholder='Email' onChange={handleChange} />
                     <input type="password" name='password' placeholder='Password' onChange={handleChange}/>
                     <button type='submit'>Log In</button>
-                    {errors? errors.map(error => <div> {error[1]} </div>) :null}
                 </form>
+                  <Stack sx={{ width: '100%' }} spacing={2}>
+                    {errors? <Alert severity="warning"> {errors} </Alert> :null}
+                  </Stack>
             </div>
         </div>
     )
