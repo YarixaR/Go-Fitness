@@ -13,11 +13,17 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-export default function Log({ exercise, logs, renderingNewLogs, userData, handleRemove }) {
+export default function Log({ exercise, log, handleUpdate, handleRemove }) {
 
     const [sets, setSets] = useState('')
     const [reps, setReps] = useState('')
     const [weight, setWeight] = useState('')
+    // const [logItem, setLogItem] = useState({})
+
+
+    // const lg = item.map((l) => {
+    //     return l.id
+    // })
 
     const [existingLogId, setExistingLogId] = useState("")
   
@@ -46,22 +52,21 @@ export default function Log({ exercise, logs, renderingNewLogs, userData, handle
         setWeight(e.target.value)
       }
 
-    //   console.log(logs.reps)
-
+   
+     
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`/logs/${logs.id}`, {
+        fetch(`/logs/${log.id}`, {
           method: 'PATCH',
           headers: {"Content-Type": "application/json" },
           body: JSON.stringify({
             sets: sets,
             reps: reps,
             weight: weight
-
           })
         }).then((resp) => resp.json())
-          .then(updatedObj => renderingNewLogs(updatedObj))
-          e.target.reset()
+          .then(updatedObj => handleUpdate(updatedObj))
+        //   e.target.reset()
         }
 
     const handleDelete = (log) => {
@@ -71,14 +76,14 @@ export default function Log({ exercise, logs, renderingNewLogs, userData, handle
         })
         .then(() => {
             handleRemove(log)
-
+            // console.log(log)
         });
             
     }
 
     return(
         <div>
-            <NavBar />
+         <NavBar />
             <div>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -91,9 +96,7 @@ export default function Log({ exercise, logs, renderingNewLogs, userData, handle
                     </TableRow>
                     </TableHead>
                     <TableBody>
-                    {userData.logs?.map((log) => (
                         <TableRow
-                        ref={refOne} onClick={e => handleExistingLog(e, log.id)}
                         key={log.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
@@ -105,9 +108,9 @@ export default function Log({ exercise, logs, renderingNewLogs, userData, handle
                         <TableCell align="right">{log.weight}</TableCell>
                         <TableCell>
                             <Chip label="Remove" size="small" onClick={e => handleDelete(log)}/>
+                            <Chip label="Edit" size="small" ref={refOne} onClick={e => handleExistingLog(e, log.id)}/>
                         </TableCell>
                         </TableRow>
-                    ))}
                     </TableBody>
                 </Table>
                 </TableContainer>
@@ -115,7 +118,7 @@ export default function Log({ exercise, logs, renderingNewLogs, userData, handle
             {isClicked ? 
              <Box
              component="form"
-             onSubmit={handleSubmit}
+             onClick={handleSubmit}
              sx={{
                  '& > :not(style)': { m: 1, width: '10ch' },
                  color: 'text.primary'
@@ -126,11 +129,23 @@ export default function Log({ exercise, logs, renderingNewLogs, userData, handle
              <TextField onChange={handleChangeSets} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
              <TextField onChange={handleChangeReps} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
              <TextField onChange={handleChangeWeight} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
-             <Button type = "submit" variant="outlined" size="small">Log</Button>
+             <Button type = "submit" variant="outlined" size="small" >Update</Button>
             </Box> 
             : null
-        }
+             } 
+
         </div>
     )
 
 }
+
+   
+            // <h1>{log.sets} {log.reps} {log.weight}</h1>
+            // <form onSubmit={handleSubmit} >
+
+            //     <input type='number' name="sets" value={sets} onChange={handleChangeSets} />
+            //     <input type='number' name="sets" value={reps} onChange={handleChangeReps} />
+            //     <input type='number' name="sets" value={weight} onChange={handleChangeWeight} />
+            
+            //     <button type='submit'>edit</button>
+            // </form>

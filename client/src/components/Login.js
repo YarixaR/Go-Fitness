@@ -30,7 +30,6 @@ function Login({handleUser}) {
             res.json().then((user) => {
               handleUser(user)
               history.push(`/home`)
-              console.log(user)
             });
           } else {
             res.json().then(json => setErrors(Object.entries(json.error)))

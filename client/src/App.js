@@ -5,10 +5,11 @@ import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Signup from './components/SignUp';
 import Home from './components/Home';
-import Log from './components/Log';
+// import Log from './components/Log';
 import Abs from './components/Abs';
 import Quads from './components/Quads';
 import { useParams } from 'react-router-dom'
+import LogContainer from './components/LogContainer';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
   useEffect(() => {getExercises()}, [])
 
   const handleRemove = () => {
-    getExercises()
+    fetchCurrentUser()
   
   }
 
@@ -53,39 +54,59 @@ function App() {
 
 
   useEffect(() => {
-    fetch("/me").then((res) => {
-        if (res.ok) {
-            res.json().then((data) => {
-              setUserData(data);
-            });
-        }else {res.json().then((json) => setErrors(json.errors))}
-    });
+    fetchCurrentUser()
 }, []);
+
+const fetchCurrentUser = () => {
+  fetch("/me").then((res) => {
+    if (res.ok) {
+        res.json().then((data) => {
+          setUserData(data);
+        });
+    }else {res.json().then((json) => setErrors(json.errors))}
+});
+}
 
 // console.log(userData)
 
-
-  useEffect(() => {
+  const fetchLogs = () => {
     fetch('/logs')
     .then((res) => res.json())
     .then((data) => setLogs(data))
-  }, [])
+  }
 
-  console.log(logs)
+   useEffect(() => {
+      fetchLogs()
+
+    }, [])
+
+  const handleUpdate = () => {
+    fetchCurrentUser()
+  }
+
+//   const item = logs.map((log) => {
+//     return log
+//   })
+//   const lg = item.map((l) => {
+//     return l
+// })
+
+
+
 
   const handleAddLogs = (addedLog) => {
     setLogs(oldLogs =>[...oldLogs, addedLog])
   }
 
-  const renderingNewLogs = (updatedLog) => {
-    const updatedResource = logs
-    ? logs.map((log) => {
-      if (log.id === updatedLog.id) {
-        return updatedLog
-      } else {return log}
-    }) : null
-    setLogs(updatedResource)
-  }
+  // const renderingNewLogs = (updatedLog) => {
+  //   const updatedResource = logs
+  //   ? logs.map((log) => {
+  //     if (log.id === updatedLog.id) {
+  //       return updatedLog
+  //     } else {return log}
+  //   }) : null
+  //   setLogs(updatedResource)
+  // }
 
 
   // const renderingWithoutDeleted = (deletedLog) => {
@@ -94,17 +115,17 @@ function App() {
   //   })
   //   setLogs(updatedLog)
   // }
-
+// TODO REMEMBER TO PASS HANDLEUPDATE WHEN YOU OPEN OTHER MUSCLE PATHS
   return (
     <Switch>
         <Route exact path="/me">
-          <Log exercise={ exercise } logs={ logs } userData={userData} handleRemove={handleRemove}/>
+          <LogContainer exercise={ exercise } logs={logs} handleUpdate={handleUpdate}  userData={userData} handleRemove={handleRemove}/>
         </Route>
         <Route exact path="/abs">
-          <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
+          <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
         </Route>
         <Route exact path="/quads">
-          <Quads exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
+          <Quads exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
         </Route>
         {/* <Route exact path="/back">
           <Back />

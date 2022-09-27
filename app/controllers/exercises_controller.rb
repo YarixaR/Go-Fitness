@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
 require 'rest-client'
-
+    skip_before_action :authenticate_user
     # before_action :find_exercise, only: :show
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   
@@ -11,7 +11,8 @@ require 'rest-client'
   
     # GET '/exercises/:id'
     def show
-      render json: @exercise, status: :ok
+      @exercise = find_exercise
+      render json: @exercise, status: :ok, include:['logs', 'logs.user']
     end
 
     def from_api
@@ -31,7 +32,7 @@ require 'rest-client'
     private
   
     def find_exercise
-      @exercise = Exercise.find(params[:id])
+     Exercise.find(params[:id])
     end
 
     def render_unprocessable_entity_response(exception)
