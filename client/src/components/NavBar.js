@@ -1,19 +1,21 @@
 import { NavLink, useHistory } from 'react-router-dom'
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
-// import Box from '@mui/material/Box';
+import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Stack from '@mui/material/Stack';
-// import Menu from '@mui/material/Menu';
-// import MenuIcon from '@mui/icons-material/Menu';
+// import Stack from '@mui/material/Stack';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
-// import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
-// import MenuItem from '@mui/material/MenuItem';
-// import AdbIcon from '@mui/icons-material/Adb';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
 import { IconButton, Typography } from '@mui/material';
 // import Button from '@mui/material/Button';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+
 
 
 
@@ -29,7 +31,17 @@ function NavBar() {
         history.push('/')
     }
 
-    
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
 
   
     // <NavLink exact to = "/home">Home</NavLink>
@@ -38,85 +50,90 @@ function NavBar() {
 
     return(
         <div>
-            <AppBar position='static' >
-                <Container maxWidth='xl'>
+            <AppBar position="static">
+            <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Typography 
-                    variant='h5' 
-                    component='div'
+                <FitnessCenterIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                <Typography
+                    variant="h5"
+                    noWrap
+                    sx={{
+                    mr: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    }}
+                >
+                    Go-Fitness
+                </Typography>
+                <Typography
+                    textAlign="center"
+                    as={NavLink}
+                    to='/home'
                     sx={{
                         mr: 2,
                         display: { xs: 'none', md: 'flex' },
-                        fontFamily: 'monospace',
                         fontWeight: 600,
-                        letterSpacing: '.2rem',
-                        color: 'inherit'
-                      }}
+                        letterSpacing: '.1rem',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        textAlign:"center"
+                        }}
                     >
-                        Go-Fitness 
-                    </Typography>
-                    {/* <NavLink exact to = "/home" style={{textDecoration: 'none'}}> */}
-                        <Typography 
-                        variant='h6'
-                        textAlign="center"
-                        noWrap
-                        as={NavLink}
-                        to='/home'
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            // fontFamily: 'monospace',
-                            fontWeight: 600,
-                            letterSpacing: '.1rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            textAlign:"center"
-                          }}
-                        >
-                            Home
-                        </Typography>
-                  
-                    {/* <NavLink exact to = "/me" style={{textDecoration: 'none'}}> */}
-                        <Typography
-                        variant='h6'
-                        textAlign="center"
-                        noWrap
-                        as={NavLink}
-                        to='/me'
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            // fontFamily: 'monospace',
-                            fontWeight: 600,
-                            letterSpacing: '.1rem',
-                            color: 'inherit',
-                            textDecoration: 'none'
-                          }}
-                        >
-                            My Logs
-                        </Typography>
-                
-                        <Typography 
-                        component="a"
-                        href="#"
-                        variant="h6"
-                        noWrap
-                        onClick={ handleLogOut }
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            // fontFamily: 'monospace',
-                            fontWeight: 600,
-                            letterSpacing: '.1rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            textAlign:"center"
-                          }}
-                        >
-                            Log out
-                        </Typography>
+                    Home
+                </Typography>
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                <Typography
+                    textAlign="center"
+                    as={NavLink}
+                    to='/me'
+                    sx={{
+                        mr: 2,
+                        display: { xs: 'none', md: 'flex' },
+                        fontWeight: 600,
+                        letterSpacing: '.1rem',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        textAlign:"center"
+                        }}
+                    >
+                    My Logs
+                </Typography>
+                </Box>
+                <Box sx={{ flexGrow: 0 }}>
+                    <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Avatar alt="" src="/static/images/avatar/2.jpg" />
+                    </IconButton>
+                    </Tooltip>
+                    <Menu
+                    sx={{ mt: '45px' }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                    >
+                   
+                        <MenuItem  onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center" onClick={ handleLogOut }>Log out</Typography>
+                        </MenuItem>
+ 
+                    </Menu>
+                </Box>
                 </Toolbar>
-             </Container>
+            </Container>
             </AppBar>
         </div>
     )
@@ -124,4 +141,3 @@ function NavBar() {
 }
 
 export default NavBar;  
-    
