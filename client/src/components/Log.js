@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-export default function Log({ log, handleUpdate, handleRemove }) {
+export default function Log({ log, change, setChange, handleDeleteLog, handleUpdateLog,  }) {
 
     const [sets, setSets] = useState('')
     const [reps, setReps] = useState('')
@@ -46,17 +46,22 @@ export default function Log({ log, handleUpdate, handleRemove }) {
    
      
     const handleSubmit = (e) => {
+      const updatedObj = {
+        sets: sets,
+        reps: reps,
+        weight: weight
+      }
         e.preventDefault()
         fetch(`/logs/${log.id}`, {
           method: 'PATCH',
           headers: {"Content-Type": "application/json" },
-          body: JSON.stringify({
-            sets: sets,
-            reps: reps,
-            weight: weight
+          body: JSON.stringify(updatedObj),
+        })
+        .then((resp) => resp.json())
+          .then(log => {
+            handleUpdateLog(log)
+            setChange(!change)
           })
-        }).then((resp) => resp.json())
-          .then(updatedObj => handleUpdate(updatedObj))
         }
 
     const handleDelete = (log) => {
@@ -65,10 +70,11 @@ export default function Log({ log, handleUpdate, handleRemove }) {
             method: "DELETE",
         })
         .then(() => {
-            handleRemove(log)
+          handleDeleteLog(log)
+          setChange(!change)
         }); 
     }
-
+// console.log(log)
     return(
         <div>
             <div>

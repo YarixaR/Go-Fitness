@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-function Login({handleUser}) {
+function Login({setUserData}) {
 
     const [ formData, setFormData ] = useState({})
 
@@ -39,7 +39,7 @@ function Login({handleUser}) {
         .then((res) => {
           if (res.ok) {
             res.json().then((user) => {
-              handleUser(user)
+              setUserData(user)
               history.push(`/home`)
             });
           } else {

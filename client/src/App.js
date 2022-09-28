@@ -17,15 +17,15 @@ import LogContainer from './components/LogContainer';
 
 function App() {
 
-
+  const [change, setChange] = useState(false)
   const [ exercise, setExercise ] = useState([])
   const [ userData, setUserData ] = useState('')
   const [errors, setErrors] = useState([])
   const [ logs, setLogs ] = useState([])
 
-  const handleUser = () => {
-    setUserData()
-  }
+  // const handleUser = () => {
+  //   setUserData()
+  // }
 
   // console.log(userData)
 
@@ -39,67 +39,65 @@ function App() {
 
   // console.log(exercise)
 
-  useEffect(() => {getExercises()}, [])
+  useEffect(() => {getExercises()}, [change])
 
-  const handleRemove = () => {
-    fetchCurrentUser()
-  }
+
 
 
   useEffect(() => {
-    fetchCurrentUser()
-}, []);
-
-const fetchCurrentUser = () => {
-  fetch("/me").then((res) => {
+    fetch("/me").then((res) => {
     if (res.ok) {
         res.json().then((data) => {
           setUserData(data);
         });
     }else {res.json().then((json) => setErrors(json.errors))}
-});
-}
+  });
+}, [change]);
 
-  const fetchLogs = () => {
+   useEffect(() => {
     fetch('/logs')
     .then((res) => res.json())
     .then((data) => setLogs(data))
+    }, [change])
+  
+  const handleUpdateLog = (updatedLog) => {
+    const updatedLogs = logs.map((log) => 
+      log.id === updatedLog.id ? updatedLog : log
+    )
+    setLogs(updatedLogs)
   }
 
-   useEffect(() => {
-      fetchLogs()
-    }, [])
-
-  const handleUpdate = () => {
-    fetchCurrentUser()
+  const handleDeleteLog = (deletedLog) => {
+    const updatedLogs = logs.filter((log) => log.id !== deletedLog.id)
+      setLogs(updatedLogs)
   }
 
   const handleAddLogs = (addedLog) => {
-    setLogs(oldLogs =>[...oldLogs, addedLog])
+    setLogs(logs =>[...logs, addedLog])
   }
 
   return (
     <Switch>
         <Route exact path="/me">
-          <LogContainer exercise={ exercise } logs={logs} handleUpdate={handleUpdate}  userData={userData} handleRemove={handleRemove}/>
+          <LogContainer exercise={ exercise } change={change} setChange={setChange} logs={logs} handleUpdateLog={handleUpdateLog} userData={userData} handleDeleteLog={handleDeleteLog}/>
         </Route>
         <Route exact path="/abs">
-          <Abs exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+          <Abs exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/cardio">
-          <Cardio exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+          <Cardio exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/quads">
-          <Quads exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+          <Quads exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/back">
-          <Back exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+          <Back exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/arms">
-          <UpperArms exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+          <UpperArms exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/chest">
-          <Chest exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} handleUpdate={handleUpdate} />
+          <Chest exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route path="/home">
           <Home exercise={ exercise } />
@@ -108,7 +106,7 @@ const fetchCurrentUser = () => {
           <Signup />
         </Route>
         <Route path="/login">
-          <Login handleUser={ handleUser } />
+          <Login setUserData={ setUserData } />
         </Route>
        <Route exact path="/">
           <LandingPage/>

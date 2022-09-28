@@ -2,7 +2,7 @@
 import NavBar from './NavBar';
 import FitCard from './FitCard';
 
-function Back({ exercise, handleAddLogs, userId, handleUpdate }) {
+function Back({ exercise, handleAddLogs, userId, handleUpdate, change, setChange }) {
 
 
     return(
@@ -20,6 +20,8 @@ function Back({ exercise, handleAddLogs, userId, handleUpdate }) {
                     handleAddLogs={handleAddLogs}
                     userId={ userId }
                     handleUpdate={handleUpdate}
+                    change={change}
+                    setChange={setChange}
                 
                 /> : null
                 )
