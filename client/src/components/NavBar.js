@@ -57,6 +57,7 @@ function NavBar() {
                     <NavLink exact to = "/home" style={{textDecoration: 'none'}}>
                         <Typography 
                         variant='h6'
+                        textAlign="center"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -72,6 +73,7 @@ function NavBar() {
                     <NavLink exact to = "/me" style={{textDecoration: 'none'}}>
                         <Typography
                         variant='h6'
+                        textAlign="center"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
