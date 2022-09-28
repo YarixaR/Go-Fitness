@@ -37,7 +37,7 @@ function App() {
       .catch(err => console.error(err));
   }
 
-  console.log(exercise)
+  // console.log(exercise)
 
   useEffect(() => {getExercises()}, [])
 
@@ -45,7 +45,6 @@ function App() {
     fetchCurrentUser()
   }
 
-  // console.log(exercise)
 
   useEffect(() => {
     fetchCurrentUser()
@@ -61,8 +60,6 @@ const fetchCurrentUser = () => {
 });
 }
 
-// console.log(userData)
-
   const fetchLogs = () => {
     fetch('/logs')
     .then((res) => res.json())
@@ -71,7 +68,6 @@ const fetchCurrentUser = () => {
 
    useEffect(() => {
       fetchLogs()
-
     }, [])
 
   const handleUpdate = () => {
@@ -82,8 +78,6 @@ const fetchCurrentUser = () => {
     setLogs(oldLogs =>[...oldLogs, addedLog])
   }
 
-
-// TODO REMEMBER TO PASS HANDLEUPDATE WHEN YOU OPEN OTHER MUSCLE PATHS
   return (
     <Switch>
         <Route exact path="/me">
