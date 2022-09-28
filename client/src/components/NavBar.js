@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 // import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import { IconButton, Typography } from '@mui/material';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 
 
 
@@ -65,11 +65,12 @@ function NavBar() {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            // fontFamily: 'monospace',
                             fontWeight: 600,
-                            letterSpacing: '.2rem',
+                            letterSpacing: '.1rem',
                             color: 'inherit',
-                            textDecoration: 'none'
+                            textDecoration: 'none',
+                            textAlign:"center"
                           }}
                         >
                             Home
@@ -85,9 +86,9 @@ function NavBar() {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            // fontFamily: 'monospace',
                             fontWeight: 600,
-                            letterSpacing: '.2rem',
+                            letterSpacing: '.1rem',
                             color: 'inherit',
                             textDecoration: 'none'
                           }}
@@ -104,11 +105,12 @@ function NavBar() {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            // fontFamily: 'monospace',
                             fontWeight: 600,
-                            letterSpacing: '.2rem',
+                            letterSpacing: '.1rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            textAlign:"center"
                           }}
                         >
                             Log out
