@@ -40,17 +40,48 @@ function NavBar() {
         <div>
             <AppBar position='static' >
                 <Toolbar>
-                    <Typography variant='h6' component='div'>
-                        Go-Fitness
+                    <Typography 
+                    variant='h5' 
+                    component='div'
+                    sx={{
+                        mr: 2,
+                        display: { xs: 'none', md: 'flex' },
+                        fontFamily: 'monospace',
+                        fontWeight: 600,
+                        letterSpacing: '.2rem',
+                        color: 'inherit'
+                      }}
+                    >
+                        Go-Fitness 
                     </Typography>
-                    <NavLink exact to = "/home">
-                        <Typography variant='h6'>
+                    <NavLink exact to = "/home" style={{textDecoration: 'none'}}>
+                        <Typography 
+                        variant='h6'
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 600,
+                            letterSpacing: '.2rem',
+                            color: 'inherit'
+                          }}
+                        >
                             Home
                         </Typography>
                     </NavLink>
-                    <NavLink exact to = "/me">
-                        <Typography variant='h6'>
-                            My Logs
+                    <NavLink exact to = "/me" style={{textDecoration: 'none'}}>
+                        <Typography
+                        variant='h6'
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 600,
+                            letterSpacing: '.2rem',
+                            color: 'inherit'
+                          }}
+                        >
+                            My Logs |
                         </Typography>
                     </NavLink>
                         <Typography 
@@ -63,8 +94,8 @@ function NavBar() {
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
+                            fontWeight: 600,
+                            letterSpacing: '.2rem',
                             color: 'inherit',
                             textDecoration: 'none',
                           }}
