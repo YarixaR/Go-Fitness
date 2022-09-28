@@ -1,24 +1,17 @@
 import Log from "./Log";
 import NavBar from "./NavBar";
+import Container from '@mui/material/Container';
 
 
 
 function LogContainer({  userData, change, setChange, handleDeleteLog, handleUpdateLog}) {
 
-// const logComponents = userData.logs.map((log) => {
-//     return console.log(log)
-//     <Log 
-//     key={log.id}
-//     log={log}
-//     handleRemove={handleRemove}
-//     handleUpdate={handleUpdate}
-//     />
-// })
 
- console.log(userData)
+//  console.log(userData)
     return (
         <div>
             <NavBar />
+        <Container maxWidth="sm">    
          {userData.logs?.map(log => <Log 
             key = {log.id}
             log = {log}
@@ -27,6 +20,8 @@ function LogContainer({  userData, change, setChange, handleDeleteLog, handleUpd
             setChange={setChange}
             handleDeleteLog={handleDeleteLog}
          />)}
+         </Container>
+
         </div>
     )
 }

@@ -23,25 +23,16 @@ function App() {
   const [errors, setErrors] = useState([])
   const [ logs, setLogs ] = useState([])
 
-  // const handleUser = () => {
-  //   setUserData()
-  // }
 
-  // console.log(userData)
 
 //! Official Fetch
-  const getExercises = () => {
-    fetch('/all_exercises')
+  useEffect(() => {
+        fetch('/all_exercises')
       .then(resp => resp.json())
       .then(data => setExercise(data))
       .catch(err => console.error(err));
-  }
-
+  }, [change])
   // console.log(exercise)
-
-  useEffect(() => {getExercises()}, [change])
-
-
 
 
   useEffect(() => {
@@ -54,11 +45,13 @@ function App() {
   });
 }, [change]);
 
+
    useEffect(() => {
     fetch('/logs')
     .then((res) => res.json())
     .then((data) => setLogs(data))
     }, [change])
+    
   
   const handleUpdateLog = (updatedLog) => {
     const updatedLogs = logs.map((log) => 
