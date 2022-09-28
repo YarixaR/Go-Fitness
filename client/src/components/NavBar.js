@@ -3,20 +3,13 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-// import Stack from '@mui/material/Stack';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { IconButton, Typography } from '@mui/material';
-// import Button from '@mui/material/Button';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-
-
 
 
 function NavBar() {
@@ -106,7 +99,7 @@ function NavBar() {
                 <Box sx={{ flexGrow: 0 }}>
                     <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar alt="" src="/static/images/avatar/2.jpg" />
+                        <Avatar />
                     </IconButton>
                     </Tooltip>
                     <Menu
@@ -125,11 +118,9 @@ function NavBar() {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                     >
-                   
                         <MenuItem  onClick={handleCloseUserMenu}>
                         <Typography textAlign="center" onClick={ handleLogOut }>Log out</Typography>
                         </MenuItem>
- 
                     </Menu>
                 </Box>
                 </Toolbar>

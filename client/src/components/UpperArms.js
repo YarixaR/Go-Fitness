@@ -8,7 +8,7 @@ function UpperArms({ exercise, handleAddLogs, userId, handleUpdate }) {
         <div>
             <NavBar />
             <div>
-                {exercise.map(arm => arm.bodyPart == "upper arms" ? <FitCard 
+                {exercise.map(arm => arm.bodyPart === "upper arms" ? <FitCard 
                     key = {arm.id}
                     id = {arm.id}
                     bodyPart = {arm.bodyPart}

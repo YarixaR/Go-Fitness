@@ -1,5 +1,5 @@
 import './stylesheets/App.css';
-import { React, useEffect, useInsertionEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
@@ -12,7 +12,7 @@ import Back from './components/Back';
 import UpperArms from './components/UpperArms';
 import Chest from './components/Chest';
 import Cardio from './components/Cardio';
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import LogContainer from './components/LogContainer';
 
 function App() {

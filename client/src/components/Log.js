@@ -1,6 +1,4 @@
-import NavBar from "./NavBar";
-import { useEffect, useState, useRef  } from 'react'
-import { useParams } from 'react-router-dom'
+import { useState, useRef  } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';

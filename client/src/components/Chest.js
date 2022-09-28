@@ -9,7 +9,7 @@ function Chest({ exercise, handleAddLogs, userId, handleUpdate }) {
         <div>
             <NavBar />
             <div>
-                {exercise.map(chest => chest.bodyPart == "chest" ? <FitCard 
+                {exercise.map(chest => chest.bodyPart === "chest" ? <FitCard 
                     key = {chest.id}
                     id = {chest.id}
                     bodyPart = {chest.bodyPart}

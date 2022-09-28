@@ -9,7 +9,7 @@ function Cardio({ exercise, handleAddLogs, userId, handleUpdate }) {
         <div>
             <NavBar />
             <div>
-                {exercise.map(cardio => cardio.bodyPart == "cardio" ? <FitCard 
+                {exercise.map(cardio => cardio.bodyPart === "cardio" ? <FitCard 
                     key = {cardio.id}
                     id = {cardio.id}
                     bodyPart = {cardio.bodyPart}

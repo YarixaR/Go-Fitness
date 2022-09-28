@@ -9,7 +9,7 @@ function Back({ exercise, handleAddLogs, userId, handleUpdate }) {
         <div>
             <NavBar />
             <div>
-                {exercise.map(back => back.bodyPart == "back" ? <FitCard 
+                {exercise.map(back => back.bodyPart === "back" ? <FitCard 
                     key = {back.id}
                     id = {back.id}
                     bodyPart = {back.bodyPart}

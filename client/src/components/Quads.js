@@ -9,7 +9,7 @@ function Quads({ exercise, handleAddLogs, userId, handleUpdate }) {
         <div>
             <NavBar />
             <div>
-                {exercise.map(quads => quads.bodyPart == "upper legs" ? <FitCard 
+                {exercise.map(quads => quads.bodyPart === "upper legs" ? <FitCard 
                     key = {quads.id}
                     id = {quads.id}
                     bodyPart = {quads.bodyPart}
