@@ -60,7 +60,7 @@ function Login({handleUser}) {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://source.unsplash.com/random/?fitness)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -133,23 +133,3 @@ function Login({handleUser}) {
 }
 
 export default Login 
-
-// <div>
-        //     <Link to={'/signup'}>Register</Link>
-        //     <Link to={'/'}>Back to Main</Link>
-        //     <div>
-        //         <form onSubmit={handleSubmit} >
-        //             <section>
-        //                 <h1>
-        //                     Log In
-        //                 </h1>
-        //             </section>
-        //             <input type="text" name='email' placeholder='Email' onChange={handleChange} />
-        //             <input type="password" name='password' placeholder='Password' onChange={handleChange}/>
-        //             <button type='submit'>Log In</button>
-        //         </form>
-                  // <Stack sx={{ width: '100%' }} spacing={2}>
-                  //   {errors? <Alert severity="warning"> {errors} </Alert> :null}
-                  // </Stack>
-        //     </div>
-        // </div>

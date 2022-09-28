@@ -65,7 +65,7 @@ function Signup() {
             sm={4}
             md={7}
             sx={{
-              backgroundImage: 'url(https://source.unsplash.com/random)',
+              backgroundImage: 'url(https://source.unsplash.com/random/?fitness)',
               backgroundRepeat: 'no-repeat',
               backgroundColor: (t) =>
                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -153,22 +153,3 @@ function Signup() {
 
 export default Signup 
 
-
-// <div>
-        //     <Link to={'/login'}>Sign In</Link>
-        //     <Link to={'/'}>Back to Main</Link>
-        //     <div>
-        //         <form onSubmit={ handleSubmit }>
-        //             <section>
-        //                 <h1>
-        //                     Register
-        //                 </h1>
-        //             </section>
-        //             <input type="text" name='name' placeholder='Name' value={name} onChange={handleChange} />
-        //             <input type="text" name='email' placeholder='Email' value={email} onChange={handleChange} />
-        //             <input type="password" name='password' placeholder='Password' value={password} onChange={handleChange} />
-        //             <button type='submit'>Register</button>
-        //             {errors? errors.map(error => <div> {error[1]} </div>) :null}
-        //         </form>
-        //     </div>
-        // </div>
