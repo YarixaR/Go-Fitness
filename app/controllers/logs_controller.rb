@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
-    # before_action :find_log, only: [:show, :update, :destroy]
-    skip_before_action :authenticate_user, except: [:index, :show]
+    before_action :find_log, only: [:show, :update, :destroy]
+    # skip_before_action :authenticate_user, except: [:index, :show]
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     
     # GET '/logs'

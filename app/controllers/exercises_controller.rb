@@ -16,12 +16,12 @@ require 'rest-client'
     end
 
     def from_api
-        key = ENV["my_api_key"]
-        my_ruby_hash = {'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com', 'X-RapidAPI-Key': key}
-        r = RestClient.get( 'https://exercisedb.p.rapidapi.com/exercises', headers= my_ruby_hash )
-    
-        data = JSON.parse(r.body)
-        render json: data.slice(0, 40)
+      key = ENV["my_api_key"]
+      my_ruby_hash = {'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com', 'X-RapidAPI-Key': key}
+      r = RestClient.get( 'https://exercisedb.p.rapidapi.com/exercises', headers= my_ruby_hash )
+  
+      data = JSON.parse(r.body)
+      render json: data.slice(0, 40)
 
 
       # BACK UP DATA

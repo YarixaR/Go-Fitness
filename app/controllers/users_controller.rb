@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # skip_before_action :authenticate_user, only: :create
+    skip_before_action :authenticate_user, only: :create
 
     def index
       u = User.all
@@ -16,12 +16,13 @@ class UsersController < ApplicationController
 
     # Show personal info
     def show
-      
       if current_user
         render json: current_user, status: :ok, include: ['logs', 'logs.exercise']
       else
         render json: { errors: "No current session stored" }, status: :unauthorized
       end
+    
+
     end    
 
     private
