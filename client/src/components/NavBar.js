@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Stack from '@mui/material/Stack';
 // import Menu from '@mui/material/Menu';
 // import MenuIcon from '@mui/icons-material/Menu';
-// import Container from '@mui/material/Container';
+import Container from '@mui/material/Container';
 // import Avatar from '@mui/material/Avatar';
 // import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
@@ -39,7 +39,8 @@ function NavBar() {
     return(
         <div>
             <AppBar position='static' >
-                <Toolbar>
+                <Container maxWidth='xl'>
+                <Toolbar disableGutters>
                     <Typography 
                     variant='h5' 
                     component='div'
@@ -54,38 +55,46 @@ function NavBar() {
                     >
                         Go-Fitness 
                     </Typography>
-                    <NavLink exact to = "/home" style={{textDecoration: 'none'}}>
+                    {/* <NavLink exact to = "/home" style={{textDecoration: 'none'}}> */}
                         <Typography 
                         variant='h6'
                         textAlign="center"
+                        noWrap
+                        as={NavLink}
+                        to='/home'
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 600,
                             letterSpacing: '.2rem',
-                            color: 'inherit'
+                            color: 'inherit',
+                            textDecoration: 'none'
                           }}
                         >
                             Home
                         </Typography>
-                    </NavLink>
-                    <NavLink exact to = "/me" style={{textDecoration: 'none'}}>
+                  
+                    {/* <NavLink exact to = "/me" style={{textDecoration: 'none'}}> */}
                         <Typography
                         variant='h6'
                         textAlign="center"
+                        noWrap
+                        as={NavLink}
+                        to='/me'
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 600,
                             letterSpacing: '.2rem',
-                            color: 'inherit'
+                            color: 'inherit',
+                            textDecoration: 'none'
                           }}
                         >
-                            My Logs |
+                            My Logs
                         </Typography>
-                    </NavLink>
+                
                         <Typography 
                         component="a"
                         href="#"
@@ -105,6 +114,7 @@ function NavBar() {
                             Log out
                         </Typography>
                 </Toolbar>
+             </Container>
             </AppBar>
         </div>
     )
