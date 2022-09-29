@@ -1,15 +1,20 @@
 import { useState, useRef  } from 'react'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
+import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
+
+
 
 export default function Log({ log, handleDeleteLog, handleUpdateLog,  }) {
 
@@ -77,8 +82,71 @@ export default function Log({ log, handleDeleteLog, handleUpdateLog,  }) {
 // console.log(log)
     return(
         <div>
-     
-            <TableBody x={{ minWidth: 650 }}>
+          <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  '& > :not(style)': {
+                    m: 1,
+                    width: 250,
+                    height: 250,
+                  },
+                }}
+                >
+                <Paper elevation={3} sx={{ textAlign: 'center' }}>
+                  <Typography color='textPrimary' variant="h9" sx={{ textTransform: 'capitalize' }}>{log.exercise.name}</Typography>
+                  <Stack direction="row" spacing={2} divider={<Divider orientation="vertical" flexItem />}>
+                    <Typography align='center'># of Sets</Typography>
+                    <Typography align='center'>Reps</Typography>
+                    <Typography align='center'>Weight</Typography>
+                  </Stack>
+                      <Divider variant="middle" />
+                  <Stack direction="row" spacing={2}  divider={<Divider orientation="vertical" flexItem sx={{ justifyContent: 'flex-end' }} />}>
+                    <Typography sx={{ textAlign: 'left' }}  color='textPrimary' >{ log.sets }</Typography>
+                    <Typography sx={{ textAlign: 'center' }}  color='textPrimary' >{ log.reps }</Typography>
+                    <Typography sx={{ textAlign: 'right' }} color='textPrimary'>{ log.weight }</Typography>
+                    <Stack >
+                    <Chip label="Remove" size="small" onClick={e => handleDelete(log)}/>
+                    <Chip label="Edit" size="small" ref={refOne} onClick={e => handleExistingLog(e, log.id)}/>
+                    </Stack>
+                    {isClicked ? 
+                <Box
+                component="form"
+                sx={{
+                    '& > :not(style)': { m: 1, width: '10ch' },
+                    color: 'text.primary'
+                }}
+                noValidate
+                autoComplete="off"
+                >
+                <TextField onChange={handleChangeSets} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
+                <TextField onChange={handleChangeReps} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
+                <TextField onChange={handleChangeWeight} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
+                <Button type = "submit" variant="outlined" size="small" onClick={handleSubmit}>Update</Button>
+                </Box> 
+                : null
+                } 
+                  </Stack>
+                </Paper>
+                
+            </Box>
+        </div>
+    )
+
+}
+
+
+            {/* <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                      <TableCell>Exercise</TableCell>
+                      <TableCell align="right"># of Sets</TableCell>
+                      <TableCell align="right">Reps</TableCell>
+                      <TableCell align="right">Weight</TableCell>
+                  </TableRow>
+                </TableHead>
+              <TableBody x={{ minWidth: 650 }}>
                 <TableRow
                 key={log.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -94,30 +162,33 @@ export default function Log({ log, handleDeleteLog, handleUpdateLog,  }) {
                     <Chip label="Edit" size="small" ref={refOne} onClick={e => handleExistingLog(e, log.id)}/>
                 </TableCell>
                 </TableRow>
-            </TableBody>
+              </TableBody>
            
-            {isClicked ? 
-             <Box
-             component="form"
-             sx={{
-                 '& > :not(style)': { m: 1, width: '10ch' },
-                 color: 'text.primary'
-             }}
-             noValidate
-             autoComplete="off"
-             >
-             <TextField onChange={handleChangeSets} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
-             <TextField onChange={handleChangeReps} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
-             <TextField onChange={handleChangeWeight} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
-             <Button type = "submit" variant="outlined" size="small" onClick={handleSubmit}>Update</Button>
-            </Box> 
-            : null
-             } 
+                {isClicked ? 
+                <Box
+                component="form"
+                sx={{
+                    '& > :not(style)': { m: 1, width: '10ch' },
+                    color: 'text.primary'
+                }}
+                noValidate
+                autoComplete="off"
+                >
+                <TextField onChange={handleChangeSets} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
+                <TextField onChange={handleChangeReps} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
+                <TextField onChange={handleChangeWeight} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
+                <Button type = "submit" variant="outlined" size="small" onClick={handleSubmit}>Update</Button>
+                </Box> 
+                : null
+                } 
+              </Table>
+            </TableContainer> */}
 
-        </div>
-    )
 
-}
+
+
+
+
 
    
             // <h1>{log.sets} {log.reps} {log.weight}</h1>
