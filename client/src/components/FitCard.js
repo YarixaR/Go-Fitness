@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import { useHistory } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -10,11 +11,13 @@ import Grid from '@mui/material/Grid';
 import CardMedia from '@mui/material/CardMedia';
 // import Divider from '@mui/material/Divider';
 
-function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, handleAddLogs, change, setChange  }) {
+function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, handleAddLogs }) {
 
     const [isClicked, setIsClicked] = useState(false)
     const [ form, setForm ] = useState({})
-    
+    // const [errors, setErrors] = useState([])
+    // const history = useHistory()
+
 
     const handleImage = () => {
         setIsClicked(isClicked => !isClicked)
@@ -38,15 +41,32 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
         // console.log(infoToSend)
 
         fetch( '/logs', {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify( infoToSend )
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify( infoToSend ),
         } )
             .then( r => r.json() )
-            .then(data => {
-                handleAddLogs(data)
-                setChange(!change)
-            })
+            .then(handleAddLogs)
             e.target.reset()
+
+        // fetch( '/logs', {
+        //     method: 'POST', headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify( infoToSend )
+        // } )
+        // .then(r => {
+        //     if(r.ok){
+        //         r.json().then(addedLog => {
+        //             handleAddLogs(addedLog)
+        //             history.push('/me')
+        //         })
+        //     }else {
+        //         r.json().then(data => {
+        //             setErrors(data.errors)
+        //         })
+        //     }
+        // })
      
     }
 

@@ -17,7 +17,7 @@ import LogContainer from './components/LogContainer';
 
 function App() {
 
-  const [change, setChange] = useState(false)
+  // const [change, setChange] = useState(false)
   const [ exercise, setExercise ] = useState([])
   const [ userData, setUserData ] = useState('')
   const [errors, setErrors] = useState([])
@@ -31,7 +31,7 @@ console.log(logs)
       .then(resp => resp.json())
       .then(data => setExercise(data))
       .catch(err => console.error(err));
-  }, [change])
+  }, [])
   // console.log(exercise)
 
 
@@ -43,7 +43,7 @@ console.log(logs)
         });
     }else {res.json().then((json) => setErrors(json.errors))}
   });
-  }, [change]);
+  }, []);
 
   useEffect(() => {
     fetch('/logs').then((res) => {
@@ -51,7 +51,7 @@ console.log(logs)
         res.json().then(setLogs)
       }
     })
-  }, [change])
+  }, [])
 
 
   
@@ -74,25 +74,25 @@ console.log(logs)
   return (
     <Switch>
         <Route exact path="/me">
-          <LogContainer exercise={ exercise } change={change} setChange={setChange} logs={logs} handleUpdateLog={handleUpdateLog} userData={userData} handleDeleteLog={handleDeleteLog}/>
+          <LogContainer exercise={ exercise }  logs={logs} handleUpdateLog={handleUpdateLog} userData={userData} handleDeleteLog={handleDeleteLog}/>
         </Route>
         <Route exact path="/abs">
-          <Abs exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
+          <Abs exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/cardio">
-          <Cardio exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
+          <Cardio exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/quads">
-          <Quads exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
+          <Quads exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/back">
-          <Back exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
+          <Back exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/arms">
-          <UpperArms exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
+          <UpperArms exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route exact path="/chest">
-          <Chest exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
+          <Chest exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route path="/home">
           <Home exercise={ exercise } userData={userData} />

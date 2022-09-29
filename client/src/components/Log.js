@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-export default function Log({ log, change, setChange, handleDeleteLog, handleUpdateLog,  }) {
+export default function Log({ log, handleDeleteLog, handleUpdateLog,  }) {
 
     const [sets, setSets] = useState('')
     const [reps, setReps] = useState('')
@@ -60,7 +60,7 @@ export default function Log({ log, change, setChange, handleDeleteLog, handleUpd
         .then((resp) => resp.json())
           .then(log => {
             handleUpdateLog(log)
-            setChange(!change)
+ 
           })
         }
 
@@ -71,7 +71,7 @@ export default function Log({ log, change, setChange, handleDeleteLog, handleUpd
         })
         .then(() => {
           handleDeleteLog(log)
-          setChange(!change)
+
         }); 
     }
 // console.log(log)

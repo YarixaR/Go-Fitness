@@ -4,7 +4,7 @@ import FitCard from './FitCard';
 // import Container from '@mui/material/Container';
 // import Grid from '@mui/material/Grid';
 
-function Abs({ exercise, handleAddLogs, userId, handleUpdate, change, setChange}) {
+function Abs({ exercise, handleAddLogs, userId, handleUpdate}) {
 
 
 
@@ -24,8 +24,7 @@ function Abs({ exercise, handleAddLogs, userId, handleUpdate, change, setChange}
                     userId={userId}
                     exercise={exercise}
                     handleUpdate={handleUpdate}
-                    change={change}
-                    setChange={setChange}
+    
                 
                 /> : null
                 )

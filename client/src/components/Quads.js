@@ -2,7 +2,7 @@
 import NavBar from './NavBar';
 import FitCard from './FitCard';
 
-function Quads({ exercise, handleAddLogs, userId, handleUpdate, change, setChange }) {
+function Quads({ exercise, handleAddLogs, userId, handleUpdate }) {
 
 
     return(
@@ -20,8 +20,7 @@ function Quads({ exercise, handleAddLogs, userId, handleUpdate, change, setChang
                     handleAddLogs={handleAddLogs}
                     userId={ userId }
                     handleUpdate={handleUpdate}
-                    change={change}
-                    setChange={setChange}
+
                 /> : null
                 )
                 }

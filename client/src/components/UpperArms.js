@@ -1,7 +1,7 @@
 import NavBar from './NavBar';
 import FitCard from './FitCard';
 
-function UpperArms({ exercise, handleAddLogs, userId, handleUpdate, change, setChange }) {
+function UpperArms({ exercise, handleAddLogs, userId, handleUpdate }) {
 
 
     return(
@@ -19,8 +19,7 @@ function UpperArms({ exercise, handleAddLogs, userId, handleUpdate, change, setC
                     handleAddLogs={handleAddLogs}
                     userId={ userId }
                     handleUpdate={handleUpdate}
-                    change={change}
-                    setChange={setChange}
+
                 /> : null
                 )
                 }

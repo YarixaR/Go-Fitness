@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 
 
 
-function LogContainer({  userData, change, setChange, handleDeleteLog, handleUpdateLog}) {
+function LogContainer({  userData, handleDeleteLog, handleUpdateLog}) {
 
 
 //  console.log(userData)
@@ -16,8 +16,7 @@ function LogContainer({  userData, change, setChange, handleDeleteLog, handleUpd
             key = {log.id}
             log = {log}
             handleUpdateLog={handleUpdateLog}
-            change={change}
-            setChange={setChange}
+
             handleDeleteLog={handleDeleteLog}
          />)}
          </Container>
