@@ -77,37 +77,25 @@ export default function Log({ log, handleDeleteLog, handleUpdateLog,  }) {
 // console.log(log)
     return(
         <div>
-            <div>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                    <TableRow>
-                        <TableCell>Exercise</TableCell>
-                        <TableCell align="right"># of Sets</TableCell>
-                        <TableCell align="right">Reps</TableCell>
-                        <TableCell align="right">Weight</TableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow
-                        key={log.id}
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                        <TableCell component="th" scope="row">
-                          {log.exercise.name}
-                        </TableCell>
-                        <TableCell align="right">{log.sets}</TableCell>
-                        <TableCell align="right">{log.reps}</TableCell>
-                        <TableCell align="right">{log.weight}</TableCell>
-                        <TableCell>
-                            <Chip label="Remove" size="small" onClick={e => handleDelete(log)}/>
-                            <Chip label="Edit" size="small" ref={refOne} onClick={e => handleExistingLog(e, log.id)}/>
-                        </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-                </TableContainer>
-            </div>
+     
+            <TableBody x={{ minWidth: 650 }}>
+                <TableRow
+                key={log.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                <TableCell component="th" scope="row">
+                  {log.exercise.name}
+                </TableCell>
+                <TableCell align="right">{log.sets}</TableCell>
+                <TableCell align="right">{log.reps}</TableCell>
+                <TableCell align="right">{log.weight}</TableCell>
+                <TableCell>
+                    <Chip label="Remove" size="small" onClick={e => handleDelete(log)}/>
+                    <Chip label="Edit" size="small" ref={refOne} onClick={e => handleExistingLog(e, log.id)}/>
+                </TableCell>
+                </TableRow>
+            </TableBody>
+           
             {isClicked ? 
              <Box
              component="form"
