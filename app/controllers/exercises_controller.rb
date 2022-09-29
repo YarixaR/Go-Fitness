@@ -2,6 +2,7 @@ class ExercisesController < ApplicationController
 require 'rest-client'
     skip_before_action :authenticate_user
     # before_action :find_exercise, only: :show
+    
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   
     # GET '/exercises'

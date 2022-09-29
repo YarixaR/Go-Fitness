@@ -23,7 +23,7 @@ function App() {
   const [errors, setErrors] = useState([])
   const [ logs, setLogs ] = useState([])
 
-
+console.log(logs)
 
 //! Official Fetch
   useEffect(() => {
@@ -43,15 +43,17 @@ function App() {
         });
     }else {res.json().then((json) => setErrors(json.errors))}
   });
-}, [change]);
+  }, [change]);
+
+  useEffect(() => {
+    fetch('/logs').then((res) => {
+      if(res.ok) {
+        res.json().then(setLogs)
+      }
+    })
+  }, [change])
 
 
-   useEffect(() => {
-    fetch('/logs')
-    .then((res) => res.json())
-    .then((data) => setLogs(data))
-    }, [change])
-    
   
   const handleUpdateLog = (updatedLog) => {
     const updatedLogs = logs.map((log) => 
@@ -93,7 +95,7 @@ function App() {
           <Chest exercise={ exercise } change={change} setChange={setChange} handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route path="/home">
-          <Home exercise={ exercise } />
+          <Home exercise={ exercise } userData={userData} />
         </Route>
         <Route path="/signup">
           <Signup />

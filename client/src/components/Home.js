@@ -29,33 +29,50 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
       const title6 = 'Quads'
       
 
-function Home({exercise}) {
+function Home({exercise, userData}) {
 
     const history = useHistory()
 
     const navigateToAbs = () => {
-        history.push('/abs')
+        if(userData) {
+            history.push('/abs')
+        } else {history.push('/login')}
+       
     }
 
     const navigateToQuads = () => {
-        history.push('/quads')
+        if(userData) {
+            history.push('/quads')
+        } else {history.push('/login')}
+       
     }
 
     const navigateToBack = () => {
-        history.push('/back')
+        if(userData) {
+            history.push('/back')
+        } else {history.push('/login')}
+       
     }
 
     const navigateToArms = () => {
-        history.push('/arms')
+        if(userData) {
+            history.push('/arms')
+        } else {history.push('/login')}
+       
     }
 
     const navigateToChest = () => {
-        history.push('/chest')
+        if(userData) {
+            history.push('/chest')
+        } else {history.push('/login')}
+       
     }
 
-
     const navigateToCardio = () => {
-        history.push('/cardio')
+        if(userData) {
+            history.push('/cardio')
+        } else {history.push('/login')}
+       
     }
 
 

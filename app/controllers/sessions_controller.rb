@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       user = User.find_by_email(params[:email])
       if user&.authenticate(params[:password])
         session[:user_id] = user.id
-        render json: user, status: :ok
+        render json: user, status: :ok, include: ['logs', 'logs.exercise']
       else 
         render json: { error: "Sorry, we can't find an account with this email or password." },
         status: :unauthorized

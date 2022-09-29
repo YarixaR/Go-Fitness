@@ -11,10 +11,11 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_user
-    render json: { error: "Not Authorized" }, status: :unauthorized unless current_user
+    render json: { errors: "Not Authorized" }, status: :unauthorized unless current_user
   end
 
   def record_not_found(not_found)
-      render json: { error: "#{not_found.model} not found"}, status: :not_found
+      # render json: { error: "#{not_found.model} not found"}, status: :not_found
+      render json: {errors: {not_found.model => "Not Found"}}, status: :not_found
     end
 end
