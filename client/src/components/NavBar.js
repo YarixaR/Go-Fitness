@@ -12,16 +12,19 @@ import { IconButton, Typography } from '@mui/material';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 
 
-function NavBar() {
+function NavBar({setUserData, setLogs }) {
 
 
     const history = useHistory()
 
     const handleLogOut = () => {
-        fetch('/logout', {
-            method: 'DELETE'
+        fetch('/logout', {method: 'DELETE'})
+        .then( ()  => {
+            history.push('/')
+            setUserData( '' )
+            setLogs( [] )
         })
-        history.push('/')
+        
     }
 
     const [anchorElUser, setAnchorElUser] = React.useState(null);

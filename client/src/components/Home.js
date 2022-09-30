@@ -31,7 +31,7 @@ import { Typography } from '@mui/material';
       const title6 = 'Quads'
       
 
-function Home({exercise, userData}) {
+function Home({exercise, userData, setUserData, setLogs}) {
 
     const history = useHistory()
 
@@ -81,7 +81,7 @@ function Home({exercise, userData}) {
     return(
         <div>
             <div>
-            <NavBar />
+            <NavBar setUserData={setUserData} setLogs={setLogs} />
                 <Typography variant="h5">Welcome, {userData.name}</Typography>
             </div>
             <ImageList sx={{ 

@@ -5,13 +5,13 @@ import { Typography, Box } from '@mui/material';
 
 
 
-function LogContainer({exercise, logs, userData, handleDeleteLog, handleUpdateLog}) {
+function LogContainer({exercise, logs, userData, handleDeleteLog, handleUpdateLog, setLogs, setUserData }) {
 
 
 //  console.log(userData)
     return (
         <div>
-            <NavBar />
+            <NavBar setUserData={setUserData} setLogs={setLogs}/>
                 <Typography variant="h5">{userData.name}'s Workout of the Day</Typography>
                     <Box 
                     sx={{ 

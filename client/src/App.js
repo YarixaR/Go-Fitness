@@ -23,7 +23,7 @@ function App() {
   const [errors, setErrors] = useState([])
   const [ logs, setLogs ] = useState([])
 
-console.log(userData)
+// console.log(userData)
 
 //! Official Fetch
   useEffect(() => {
@@ -51,7 +51,7 @@ console.log(userData)
         res.json().then(setLogs)
       }
     })
-  }, [])
+  }, [ userData ])
 
 
   
@@ -70,11 +70,11 @@ console.log(userData)
   const handleAddLogs = (addedLog) => {
     setLogs(logs =>[...logs, addedLog])
   }
-console.log(logs)
+// console.log(logs)
   return (
     <Switch>
         <Route exact path="/me">
-          <LogContainer exercise={ exercise }  logs={logs} handleUpdateLog={handleUpdateLog} userData={userData} handleDeleteLog={handleDeleteLog}/>
+          <LogContainer exercise={ exercise } setLogs={setLogs} setUserData={setUserData}  logs={logs} handleUpdateLog={handleUpdateLog} userData={userData} handleDeleteLog={handleDeleteLog}/>
         </Route>
         <Route exact path="/abs">
           <Abs exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
@@ -95,7 +95,7 @@ console.log(logs)
           <Chest exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
         </Route>
         <Route path="/home">
-          <Home exercise={ exercise } userData={userData} />
+          <Home exercise={ exercise } userData={userData} setUserData={setUserData} setLogs={setLogs} />
         </Route>
         <Route path="/signup">
           <Signup />
