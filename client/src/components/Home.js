@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
+import { Typography } from '@mui/material';
+
 
 
 
@@ -80,6 +82,7 @@ function Home({exercise, userData}) {
         <div>
             <div>
             <NavBar />
+                <Typography variant="h5">Welcome, {userData.name}</Typography>
             </div>
             <ImageList sx={{ 
                 gridAutoFlow: "column",

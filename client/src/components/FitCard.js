@@ -69,7 +69,7 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
         // })
      
     }
-
+// console.log(gifUrl)
 
     return(
         <div>
@@ -106,7 +106,7 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
                 component="img"
                 sx={{ width: 151 }}
                 image={gifUrl} 
-                alt="Live from space album cover"
+                alt={name}
             />
             </Card>
         </Grid>

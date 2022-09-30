@@ -23,7 +23,7 @@ function App() {
   const [errors, setErrors] = useState([])
   const [ logs, setLogs ] = useState([])
 
-console.log(logs)
+// console.log(logs)
 
 //! Official Fetch
   useEffect(() => {
