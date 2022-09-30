@@ -5,7 +5,7 @@ class LogsController < ApplicationController
     
     # GET '/logs'
     def index
-      render json: Log.all, status: :ok
+      render json: current_user.logs, status: :ok
     end
   
     # GET '/logs/:id'
@@ -22,8 +22,8 @@ class LogsController < ApplicationController
       log.user_id = user.id
       log.exercise_id = exercise.id
       log.save
-
-      render json: log
+      
+      render json: log, status: :ok
 
       # log = Log.create!(log_params)
       # render json: log, status: :created
@@ -31,15 +31,15 @@ class LogsController < ApplicationController
   
     # PATCH '/logs/:id'
     def update
-      @log = find_log
-      @log.update!(log_params)
-      render json: @log, status: :ok
+      log = find_log
+      log.update!(log_params)
+      render json: log, status: :ok
     end
   
     # DELETE '/logs/:id'
     def destroy
-      @log = find_log
-      @log.destroy
+      log = find_log
+      log.destroy
       head :no_content
     end
   
@@ -51,7 +51,7 @@ class LogsController < ApplicationController
     end
   
     def log_params
-      params.permit(:sets, :reps, :weight, :user_id, :exercise_id)
+      params.permit(:sets, :reps, :weight, :exercise_id)
     end
 
     def exercise_params

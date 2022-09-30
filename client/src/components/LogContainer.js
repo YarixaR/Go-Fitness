@@ -1,18 +1,11 @@
 import Log from "./Log";
 import NavBar from "./NavBar";
-// import Container from '@mui/material/Container';
-// import TableHead from '@mui/material/TableHead';
-// import TableRow from '@mui/material/TableRow';
-// import TableCell from '@mui/material/TableCell';
-// import Paper from '@mui/material/Paper';
-// import TableContainer from '@mui/material/TableContainer';
-// import Table from '@mui/material/Table';
 import { Typography, Box } from '@mui/material';
 
 
 
 
-function LogContainer({exercise, userData, handleDeleteLog, handleUpdateLog}) {
+function LogContainer({exercise, logs, userData, handleDeleteLog, handleUpdateLog}) {
 
 
 //  console.log(userData)
@@ -28,7 +21,7 @@ function LogContainer({exercise, userData, handleDeleteLog, handleUpdateLog}) {
                         gridTemplateColumns: 'repeat(3, 1fr)',
                     }}
                     >
-                        {userData.logs?.map(log => <Log 
+                        {logs.map(log => <Log 
                             key = {log.id}
                             log = {log}
                             handleUpdateLog={handleUpdateLog}

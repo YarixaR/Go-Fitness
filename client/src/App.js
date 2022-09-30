@@ -23,7 +23,7 @@ function App() {
   const [errors, setErrors] = useState([])
   const [ logs, setLogs ] = useState([])
 
-// console.log(logs)
+console.log(userData)
 
 //! Official Fetch
   useEffect(() => {
@@ -70,7 +70,7 @@ function App() {
   const handleAddLogs = (addedLog) => {
     setLogs(logs =>[...logs, addedLog])
   }
-
+console.log(logs)
   return (
     <Switch>
         <Route exact path="/me">

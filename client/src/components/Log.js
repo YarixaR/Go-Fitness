@@ -57,12 +57,12 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
       }
 
     const handleSubmit = (e) => {
+      e.preventDefault()
       const updatedObj = {
-        sets: sets,
-        reps: reps,
-        weight: weight
+         sets,
+         reps,
+         weight
       }
-        e.preventDefault()
         fetch(`/logs/${log.id}`, {
           method: 'PATCH',
           headers: {"Content-Type": "application/json" },
@@ -70,6 +70,7 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
         })
         .then((resp) => resp.json())
           .then(log => {
+            console.log(log, 'patch')
             handleUpdateLog(log)
  
           })
