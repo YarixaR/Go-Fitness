@@ -48,68 +48,52 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
             body: JSON.stringify( infoToSend ),
         } )
             .then( r => r.json() )
-            .then(handleAddLogs)
+            .then(handleAddLogs, alert("Added to Logs"))
             e.target.reset()
-
-        // fetch( '/logs', {
-        //     method: 'POST', headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify( infoToSend )
-        // } )
-        // .then(r => {
-        //     if(r.ok){
-        //         r.json().then(addedLog => {
-        //             handleAddLogs(addedLog)
-        //             history.push('/me')
-        //         })
-        //     }else {
-        //         r.json().then(data => {
-        //             setErrors(data.errors)
-        //         })
-        //     }
-        // })
-     
     }
-// console.log(gifUrl)
+// console.log(gifUrl, 'fitcard')
 
     return(
         <div>
-        <Grid >
-            <Card sx={{ display: 'flex',gap: 4,'--Card-padding': (theme) => theme.spacing(9), }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                <CardContent>
-                <Typography gutterBottom variant="h6" component="div">{ name }</Typography>
-                <Typography variant="body2" color="text.secondary">Focus: { bodyPart }</Typography>
-                <Typography variant="body2" color="text.secondary">Targeted muscle: { target }</Typography>
-                <Typography variant="body2" color="text.secondary">Equipment: { equipment }</Typography>
-                </CardContent>
-                {isClicked ? 
-                <Box
-                    component="form"
-                    onSubmit={handleSubmit}
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '10ch' },
-                        color: 'text.primary'
-                    }}
-                    noValidate
-                    autoComplete="off"
+            <Grid>
+                <Card sx={{ display: 'flex',gap: 4,'--Card-padding': (theme) => theme.spacing(9), }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', pl:50}}>
+                    <CardContent>
+                    <Typography gutterBottom variant="h6" component="div">{ name }</Typography>
+                    <Typography variant="body2" color="text.secondary">Focus: { bodyPart }</Typography>
+                    <Typography variant="body2" color="text.secondary">Targeted muscle: { target }</Typography>
+                    <Typography variant="body2" color="text.secondary">Equipment: { equipment }</Typography>
+                    </CardContent>
+                    {isClicked ? 
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit}
+                        sx={{
+                            '& > :not(style)': { m: 1, width: '10ch' },
+                            color: 'text.primary'
+                        }}
+                        noValidate
+                        autoComplete="off"
                     >
-                    <TextField onChange={handleChange} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
-                    <TextField onChange={handleChange} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
-                    <TextField onChange={handleChange} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
-                    <Button type = "submit" variant="outlined" size="small">Log</Button>
-                </Box> 
-                : null
-                }
-            </Box>
-            <CardMedia
-                onClick={ handleImage } 
-                component="img"
-                sx={{ width: 151 }}
-                image={gifUrl} 
-                alt={name}
-            />
-            </Card>
-        </Grid>
+                        <TextField onChange={handleChange} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
+                        <TextField onChange={handleChange} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
+                        <TextField onChange={handleChange} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />
+                        <Button type = "submit" variant="outlined" size="small">Log</Button>
+                    </Box> 
+                    : null
+                    }
+                    </Box>
+                    <CardMedia
+                        onClick={ handleImage } 
+                        component="img"
+                        sx={{ width: 200, pr:40}}
+                        image={gifUrl} 
+                        alt={name}
+                        
+                    />
+                
+                </Card>
+            </Grid>
         </div>
     )
 }

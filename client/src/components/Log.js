@@ -89,7 +89,10 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
     const current = new Date();
     const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
 
-// console.log(exercise.gifUrl)
+    // const gifURL = exercise.map((ex) => {
+    //  key={ex.id}
+    // })
+
     return(
         <div>
             <Card sx={{ maxWidth: 345 }}>
@@ -106,12 +109,9 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
       
                     </CardHeader>
                   {/* <img src={log.exercise.gifURL} alt={log.exercise.name}/> */}
-                  {/* <CardMedia
-                    component="img"
-                    height="194"
-                    image={log.exercise.gifURL}
-                    alt={log.exercise.name}
-                  /> */}
+                  {/* <CardMedia {gifURL}/> */}
+                  
+           
                   <CardContent>
                     <Typography variant="p" color="text.secondary">
                     # of Sets | Reps | Weight

@@ -122,9 +122,10 @@ function Login({setUserData}) {
                 </Grid>
               </Grid>
             </Box>
-            <Stack sx={{ width: '100%' }} spacing={2}>
-                {errors? <Alert severity="warning"> {errors} </Alert> :null}
-            </Stack>
+            {errors ? 
+            (<Stack sx={{ width: '100%' }} spacing={2}>
+                 <Alert severity="warning"> {errors} </Alert>
+            </Stack>) : null}
           </Box>
         </Grid>
       </Grid>
