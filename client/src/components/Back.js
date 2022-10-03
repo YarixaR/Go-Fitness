@@ -2,12 +2,12 @@
 import NavBar from './NavBar';
 import FitCard from './FitCard';
 
-function Back({ exercise, handleAddLogs, userId, handleUpdate}) {
+function Back({ exercise, handleAddLogs, userId, handleUpdate, setUserData,setLogs }) {
 
 
     return(
         <div>
-            <NavBar />
+            <NavBar setUserData={setUserData} setLogs={setLogs} userId={userId}/>
             <div>
                 {exercise.map(back => back.bodyPart === "back" ? <FitCard 
                     key = {back.id}
@@ -18,9 +18,8 @@ function Back({ exercise, handleAddLogs, userId, handleUpdate}) {
                     name = {back.name}
                     target = {back.target}
                     handleAddLogs={handleAddLogs}
-                    userId={ userId }
                     handleUpdate={handleUpdate}
-  
+                    
                 /> : null
                 )
                 }

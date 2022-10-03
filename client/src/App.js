@@ -77,22 +77,22 @@ function App() {
           <LogContainer exercise={ exercise } setLogs={setLogs} setUserData={setUserData}  logs={logs} handleUpdateLog={handleUpdateLog} userData={userData} handleDeleteLog={handleDeleteLog}/>
         </Route>
         <Route exact path="/abs">
-          <Abs exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
+          <Abs exercise={ exercise }  handleAddLogs={handleAddLogs}  setUserData={setUserData} setLogs={setLogs}  />
         </Route>
         <Route exact path="/cardio">
-          <Cardio exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
+          <Cardio exercise={ exercise }  handleAddLogs={handleAddLogs}  setUserData={setUserData} setLogs={setLogs} />
         </Route>
         <Route exact path="/quads">
-          <Quads exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
+          <Quads exercise={ exercise }  handleAddLogs={handleAddLogs} setUserData={setUserData} setLogs={setLogs} />
         </Route>
         <Route exact path="/back">
-          <Back exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
+          <Back exercise={ exercise }  handleAddLogs={handleAddLogs}  setUserData={setUserData} setLogs={setLogs} />
         </Route>
         <Route exact path="/arms">
-          <UpperArms exercise={ exercise }  handleAddLogs={handleAddLogs} userId={userData} />
+          <UpperArms exercise={ exercise }  handleAddLogs={handleAddLogs}  setUserData={setUserData} setLogs={setLogs} />
         </Route>
         <Route exact path="/chest">
-          <Chest exercise={ exercise } handleAddLogs={handleAddLogs} userId={userData} />
+          <Chest exercise={ exercise } handleAddLogs={handleAddLogs}  setUserData={setUserData} setLogs={setLogs} />
         </Route>
         <Route path="/home">
           <Home exercise={ exercise } userData={userData} setUserData={setUserData} setLogs={setLogs} />

@@ -10,9 +10,9 @@ function LogContainer({exercise, logs, userData, handleDeleteLog, handleUpdateLo
 
 //  console.log(userData)
     return (
-        <div>
+        <div className="log-container">
             <NavBar setUserData={setUserData} setLogs={setLogs}/>
-                <Typography variant="h5">{userData.name}'s Workout of the Day</Typography>
+                <Typography fontFamily='Sarabun' variant="h5">{userData.name}'s Workout of the Day</Typography>
                     <Box 
                     sx={{ 
                         display: 'grid',

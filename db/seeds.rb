@@ -12,6 +12,6 @@ puts "Start seeding"
 User.destroy_all
 User.reset_pk_sequence
 
-User.create!(name: 'Yari', email: 'yari@gmail.com', password: '123')
+User.create!(name: 'Yari', email: 'yari@gmail.com', password: '1234')
 
 puts "Seeding complete 🌼"

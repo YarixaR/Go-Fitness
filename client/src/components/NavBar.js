@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { IconButton, Typography } from '@mui/material';
@@ -46,7 +46,7 @@ function NavBar({setUserData, setLogs }) {
 
     return(
         <div>
-            <AppBar position="static">
+            <AppBar position="static" style={{backgroundColor: 'white', color: 'black'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                 <FitnessCenterIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -56,7 +56,7 @@ function NavBar({setUserData, setLogs }) {
                     sx={{
                     mr: 2,
                     display: { xs: 'none', md: 'flex' },
-                    fontFamily: 'monospace',
+                    fontFamily:'Neusanextpro,sans-serif',
                     fontWeight: 700,
                     letterSpacing: '.3rem',
                     color: 'inherit',
@@ -102,7 +102,7 @@ function NavBar({setUserData, setLogs }) {
                 <Box sx={{ flexGrow: 0 }}>
                     <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar />
+                        <AccountCircle />
                     </IconButton>
                     </Tooltip>
                     <Menu

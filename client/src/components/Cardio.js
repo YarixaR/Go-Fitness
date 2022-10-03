@@ -2,12 +2,12 @@
 import NavBar from './NavBar';
 import FitCard from './FitCard';
 
-function Cardio({ exercise, handleAddLogs, userId, handleUpdate }) {
+function Cardio({ exercise, handleAddLogs, userId, handleUpdate, setUserData, setLogs }) {
 
 
     return(
         <div>
-            <NavBar />
+            <NavBar setUserData={setUserData} setLogs={setLogs} userId={userId} />
             <div>
                 {exercise.map(cardio => cardio.bodyPart === "cardio" ? <FitCard 
                     key = {cardio.id}
@@ -18,9 +18,8 @@ function Cardio({ exercise, handleAddLogs, userId, handleUpdate }) {
                     name = {cardio.name}
                     target = {cardio.target}
                     handleAddLogs={handleAddLogs}
-                    userId={ userId }
                     handleUpdate={handleUpdate}
-
+                    
                 /> : null
                 )
                 }

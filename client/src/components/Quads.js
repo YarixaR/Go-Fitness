@@ -2,12 +2,12 @@
 import NavBar from './NavBar';
 import FitCard from './FitCard';
 
-function Quads({ exercise, handleAddLogs, userId, handleUpdate }) {
+function Quads({ exercise, handleAddLogs, userId, handleUpdate, setUserData, setLogs }) {
 
 
     return(
         <div>
-            <NavBar />
+            <NavBar setUserData={setUserData} setLogs={setLogs} userId={userId}/>
             <div>
                 {exercise.map(quads => quads.bodyPart === "upper legs" ? <FitCard 
                     key = {quads.id}
@@ -18,9 +18,8 @@ function Quads({ exercise, handleAddLogs, userId, handleUpdate }) {
                     name = {quads.name}
                     target = {quads.target}
                     handleAddLogs={handleAddLogs}
-                    userId={ userId }
                     handleUpdate={handleUpdate}
-
+               
                 /> : null
                 )
                 }
