@@ -12,7 +12,8 @@ function LogContainer({exercise, logs, userData, handleDeleteLog, handleUpdateLo
     return (
         <div className="log-container">
             <NavBar setUserData={setUserData} setLogs={setLogs}/>
-                <Typography fontFamily='Sarabun' variant="h5">{userData.name}'s Workout of the Day</Typography>
+                {/* <Typography fontFamily='Sarabun' variant="h5">{userData.name}'s Workout of the Day</Typography> */}
+                <Typography fontFamily='Neusanextpro,sans-serif' fontWeight='500' variant='h5' sx={{ letterSpacing: '-.07em', lineHeight: '100%' }}>{userData.name}'s Workout of the Day</Typography>
                     <Box 
                     sx={{ 
                         display: 'grid',
