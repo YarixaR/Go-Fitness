@@ -16,7 +16,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { cyan } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
@@ -69,11 +69,8 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
           body: JSON.stringify(updatedObj),
         })
         .then((resp) => resp.json())
-          .then(log => {
-            console.log(log, 'patch')
-            handleUpdateLog(log)
- 
-          })
+        .then(handleUpdateLog)
+        
     }
 
     const handleDelete = (log) => {
@@ -89,17 +86,13 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
     const current = new Date();
     const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
 
-    // const gifURL = exercise.map((ex) => {
-    //  key={ex.id}
-    // })
-
     return(
         <div>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345, ml: '50px' }}>
                   <CardHeader
                     sx={{ textTransform: 'capitalize' }}
                     avatar={
-                      <Avatar sx={{ bgcolor: red[500] }} aria-label={userData.name}>
+                      <Avatar sx={{ bgcolor: cyan[800] }} aria-label={userData.name}>
                         {userData.name}
                       </Avatar>
                     }
@@ -107,19 +100,15 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
                     subheader={date}
                     >
       
-                    </CardHeader>
-                  {/* <img src={log.exercise.gifURL} alt={log.exercise.name}/> */}
-                  {/* <CardMedia {gifURL}/> */}
-                  
-           
+                    </CardHeader>      
                   <CardContent>
                     <Typography fontFamily='Sarabun' variant="p" color="text.secondary">
-                    # of Sets | Reps | Weight
+                    Sets | Reps | Weight
                     </Typography>
                     <Stack direction="row" spacing={2}  divider={<Divider orientation="vertical" flexItem sx={{ justifyContent: 'flex-end' }} />}>
-                      <Typography variant="h6" color='textPrimary' >{ log.sets }</Typography>
-                      <Typography variant="h6" color='textPrimary' >{ log.reps }</Typography>
-                      <Typography variant="h6" color='textPrimary'>{ log.weight }</Typography>
+                      <Typography variant="h6" color='textPrimary' fontFamily='Neusanextpro,sans-serif' sx={{ letterSpacing: '-.07em'}} >{ log.sets }</Typography>
+                      <Typography variant="h6" color='textPrimary' fontFamily='Neusanextpro,sans-serif' sx={{ letterSpacing: '-.07em'}} >{ log.reps }</Typography>
+                      <Typography variant="h6" color='textPrimary' fontFamily='Neusanextpro,sans-serif' sx={{ letterSpacing: '-.07em'}}>{ log.weight }</Typography>
                     </Stack>
                   </CardContent>
                   <CardActions disableSpacing>
@@ -135,16 +124,16 @@ export default function Log({ exercise, log, handleDeleteLog, handleUpdateLog, u
                   </CardActions>
                   <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                      <Typography paragraph>Edit Workout</Typography>
+                      <Typography fontFamily='Neusanextpro,sans-serif' fontWeight='600' sx={{ letterSpacing: '-.07em', lineHeight: '100%' }} paragraph>Edit Workout</Typography>
                       <Box
-                  component="form"
-                  sx={{
-                      '& > :not(style)': { m: 1, width: '10ch' },
-                      color: 'text.primary'
-                  }}
-                  noValidate
-                  autoComplete="off"
-                  >
+                      component="form"
+                      sx={{
+                          '& > :not(style)': { m: 1, width: '10ch' },
+                          color: 'text.primary'
+                      }}
+                      noValidate
+                      autoComplete="off"
+                      >
                   <TextField onChange={handleChangeSets} id="standard-basic" label="# of Sets" variant="standard" type='number' name="sets" />
                   <TextField onChange={handleChangeReps} id="standard-basic" label="Reps" variant="standard" type='number' name="reps" />
                   <TextField onChange={handleChangeWeight} id="standard-basic" label="Weight" variant="standard" type='number' name="weight" />

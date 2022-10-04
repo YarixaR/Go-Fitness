@@ -135,6 +135,7 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
                     />
                 
                 </Card>
+                
             </Grid>
         </div>
     )
