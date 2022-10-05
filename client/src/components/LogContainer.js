@@ -19,7 +19,15 @@ function LogContainer({exercise, logs, userData, handleDeleteLog, handleUpdateLo
                         display: 'grid',
                         columnGap: 3,
                         rowGap: 3,
-                        gridTemplateColumns: 'repeat(3, 1fr)',
+                        gridTemplateColumns: {
+                            sm: ".5fr",
+                            md: ".5fr .5fr",
+                            lg: ".5fr .5fr .5fr",
+                            xl: ".5fr .5fr .5fr .5fr"
+                        },
+                        "& > :not(style)": {
+                            m: 2,
+                        },
                     }}
                     >
                         {logs.map(log => <Log 

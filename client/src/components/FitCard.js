@@ -128,7 +128,7 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
                     <CardMedia
                         onClick={ handleImage } 
                         component="img"
-                        sx={{ width: 200, pr:40}}
+                        sx={{ width: 200, pr:40 }}
                         image={gifUrl} 
                         alt={name}
                         
