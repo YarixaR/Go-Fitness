@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -134,10 +135,24 @@ function Signup() {
                 </Button>
                 <Grid container spacing={2}>
                   <Grid item>
-                  <Link to={'/login'}>Sign In</Link>
+                  <Button 
+                  variant="outlined"
+                  to='/login'
+                  fullWidth
+                  component={RouterLink}
+                  >
+                   Sign In
+                  </Button>
                   </Grid>
                   <Grid item>
-                  <Link to={'/'}>Back to Main</Link>
+                    <Button 
+                    variant="outlined"
+                    to='/'
+                    fullWidth
+                    component={RouterLink}
+                    >
+                    Back to Main
+                    </Button>
                   </Grid>
                 </Grid>
               </Box>

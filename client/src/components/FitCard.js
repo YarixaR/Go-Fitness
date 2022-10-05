@@ -91,7 +91,7 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
     return(
         <div>
             
-                <Card sx={{ maxWidth: 400, ml: '30px' }}>
+                <Card sx={{ maxWidth: 400, ml: '15px' }}>
                     <CardContent sx={{ alignContent:'center', display: 'flex'}} >
                     <CardMedia
                         onClick={ handleImage } 
