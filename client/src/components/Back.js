@@ -1,7 +1,7 @@
 
 import NavBar from './NavBar';
 import FitCard from './FitCard';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 function Back({ exercise, handleAddLogs, userId, handleUpdate, setUserData,setLogs }) {
 
@@ -22,6 +22,22 @@ function Back({ exercise, handleAddLogs, userId, handleUpdate, setUserData,setLo
                 >
                 Exercise
                 </Typography>
+                <Box 
+                    sx={{ 
+                        display: 'grid',
+                        columnGap: 3,
+                        rowGap: 3,
+                        gridTemplateColumns: {
+                            sm: ".5fr",
+                            md: ".5fr .5fr",
+                            lg: ".5fr .5fr .5fr",
+                            xl: ".5fr .5fr .5fr .5fr"
+                        },
+                        "& > :not(style)": {
+                            m: 2,
+                        },
+                    }}
+                >
                 {exercise.map(back => back.bodyPart === "back" ? <FitCard 
                     key = {back.id}
                     id = {back.id}
@@ -36,6 +52,7 @@ function Back({ exercise, handleAddLogs, userId, handleUpdate, setUserData,setLo
                 /> : null
                 )
                 }
+                </Box>
             </div>
         </div>
     )
