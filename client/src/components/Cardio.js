@@ -1,7 +1,7 @@
 
 import NavBar from './NavBar';
 import FitCard from './FitCard';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 function Cardio({ exercise, handleAddLogs, userId, handleUpdate, setUserData, setLogs }) {
 
@@ -22,6 +22,22 @@ function Cardio({ exercise, handleAddLogs, userId, handleUpdate, setUserData, se
                 >
                 Exercise
                 </Typography>
+                <Box 
+                    sx={{ 
+                        display: 'grid',
+                        columnGap: 3,
+                        rowGap: 3,
+                        gridTemplateColumns: {
+                            sm: ".5fr",
+                            md: ".5fr .5fr",
+                            lg: ".5fr .5fr .5fr",
+                            xl: ".5fr .5fr .5fr .5fr"
+                        },
+                        "& > :not(style)": {
+                            m: 2,
+                        },
+                    }}
+                >
                 {exercise.map(cardio => cardio.bodyPart === "cardio" ? <FitCard 
                     key = {cardio.id}
                     id = {cardio.id}
@@ -36,6 +52,7 @@ function Cardio({ exercise, handleAddLogs, userId, handleUpdate, setUserData, se
                 /> : null
                 )
                 }
+                </Box>
             </div>
         </div>
     )

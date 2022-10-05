@@ -90,9 +90,16 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
     return(
         <div>
             <Grid>
-                <Card sx={{ display: 'flex',gap: 4,'--Card-padding': (theme) => theme.spacing(9), }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', pl:50}}>
+                <Card sx={{ maxWidth: 345, ml: '50px' }}>
                     <CardContent>
+                    <CardMedia
+                        onClick={ handleImage } 
+                        component="img"
+                        sx={{ width: 200, pr:40 }}
+                        image={gifUrl} 
+                        alt={name}
+                        
+                    />
                     <Typography gutterBottom variant="h6" component="div">{ name }</Typography>
                     <Typography variant="body2" color="text.secondary">Focus: { bodyPart }</Typography>
                     <Typography variant="body2" color="text.secondary">Targeted muscle: { target }</Typography>
@@ -124,15 +131,7 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
                     </Box> 
                     : null
                     }
-                    </Box>
-                    <CardMedia
-                        onClick={ handleImage } 
-                        component="img"
-                        sx={{ width: 200, pr:40 }}
-                        image={gifUrl} 
-                        alt={name}
-                        
-                    />
+                    
                 
                 </Card>
                 
