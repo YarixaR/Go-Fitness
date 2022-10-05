@@ -5,7 +5,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-// import Stack from '@mui/material/Stack';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
@@ -15,6 +15,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+
 
 function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, handleAddLogs }) {
 
@@ -89,22 +90,24 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
 
     return(
         <div>
-            <Grid>
-                <Card sx={{ maxWidth: 345, ml: '50px' }}>
-                    <CardContent>
+            
+                <Card sx={{ maxWidth: 400, ml: '30px' }}>
+                    <CardContent sx={{ alignContent:'center', display: 'flex'}} >
                     <CardMedia
                         onClick={ handleImage } 
                         component="img"
-                        sx={{ width: 200, pr:40 }}
+                        sx={{ width: 210 }}
                         image={gifUrl} 
                         alt={name}
-                        
                     />
+                    <Stack >
                     <Typography gutterBottom variant="h6" component="div">{ name }</Typography>
                     <Typography variant="body2" color="text.secondary">Focus: { bodyPart }</Typography>
                     <Typography variant="body2" color="text.secondary">Targeted muscle: { target }</Typography>
                     <Typography variant="body2" color="text.secondary">Equipment: { equipment }</Typography>
+                    </Stack>
                     </CardContent>
+                    
                     {isClicked ? 
                     <Box
                         component="form"
@@ -131,11 +134,8 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
                     </Box> 
                     : null
                     }
-                    
-                
                 </Card>
-                
-            </Grid>
+
         </div>
     )
 }

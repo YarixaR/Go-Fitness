@@ -13,6 +13,7 @@ import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import { pink } from '@mui/material/colors';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import stretching from '../assets/video.mp4'
+import CardMedia from '@mui/material/CardMedia';
 
       const img1 = 'https://jackcityfitness.com/wp-content/uploads/benefits-of-planking.jpg'
       const title1 = 'Abs'
@@ -97,7 +98,17 @@ function Home({exercise, userData, setUserData, setLogs}) {
                 <div>
                 <Stack gap='60px' sx={{flexDirection: {lg: 'row'}, p: '20px', alignItems: 'center'}}>
                 {exercise.map(ex => ex.name === 'back and forth step' ? 
-                    <img key={ex.id} src={ex.gifUrl} alt={ex.name} loading='lazy' className='detail-image' /> : null
+                    <CardMedia
+                        key={ex.id}
+                        component='img'
+                        image={ex.gifUrl}
+                        alt={ex.name} 
+                        loading='lazy' 
+                        className='detail-image'
+                        sx={{width: 700,
+                        borderRadius: 2
+                        }}
+                    /> : null
                 )}
                 <Stack sx={{ gap: {lg: '35px', xs: '20px' }}} >
                     <Typography fontFamily='Neusanextpro,sans-serif' fontWeight='700' variant='h4' sx={{ letterSpacing: '-.02em', lineHeight: '100%' }}>BACK AND FORTH STEP</Typography>
