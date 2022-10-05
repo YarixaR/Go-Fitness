@@ -32,8 +32,6 @@ function LandingPage() {
                   variant="outlined"
                   to='/signup'
                   sx={{ 
-                    mt: 3, 
-                    mb: 2,
                     color: 'white',
                     border: '2px white solid'
                 }}

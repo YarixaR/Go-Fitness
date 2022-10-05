@@ -100,10 +100,10 @@ function FitCard({ id, exercise, bodyPart, equipment, gifUrl, name, target, hand
                         alt={name}
                     />
                     <Stack >
-                    <Typography gutterBottom variant="h6" component="div">{ name }</Typography>
-                    <Typography variant="body2" color="text.secondary">Focus: { bodyPart }</Typography>
-                    <Typography variant="body2" color="text.secondary">Targeted muscle: { target }</Typography>
-                    <Typography variant="body2" color="text.secondary">Equipment: { equipment }</Typography>
+                    <Typography gutterBottom variant="h6" component="div" sx={{ textTransform: 'capitalize' }}>{ name }</Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ textTransform: 'capitalize' }}>Focus: { bodyPart }</Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ textTransform: 'capitalize' }}>Targeted muscle: { target }</Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ textTransform: 'capitalize' }}>Equipment: { equipment }</Typography>
                     </Stack>
                     </CardContent>
                     
