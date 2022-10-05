@@ -114,39 +114,83 @@ function Home({exercise, userData, setUserData, setLogs}) {
                 </Stack>
                 </Stack>
                 </div> 
-                <ImageList sx={{ 
-                    gridAutoFlow: "column",
-                    gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr)) !important",
-                    gridAutoColumns: "minmax(230px, 1fr)"}}>
+                <ImageList 
+                    sx={{ 
+                        gridAutoFlow: "column",
+                        gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr)) !important",
+                        gridAutoColumns: "minmax(230px, 1fr)"}}
+                    >
                 
                     <ImageListItem key={img1}>
                     <img onClick = { navigateToAbs } src={img1} alt={title1}/>
-                    <ImageListItemBar title={title1}/>
+                    <ImageListItemBar 
+                        sx={{
+                            background:
+                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                            }} 
+                        title={title1}
+                        />
                     </ImageListItem>
 
                     <ImageListItem key={img2}>
                     <img onClick = { navigateToArms } src={img2} alt={title2}/>
-                    <ImageListItemBar title={title2}/>
+                    <ImageListItemBar
+                        sx={{
+                            background:
+                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                            }} 
+                        title={title2}
+                        />
                     </ImageListItem>
 
                     <ImageListItem key={img3}>
                     <img onClick = { navigateToBack } src={img3} alt={title3}/>
-                    <ImageListItemBar title={title3}/>
+                    <ImageListItemBar
+                        sx={{
+                            background:
+                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                            }} 
+                        title={title3}
+                        />
                     </ImageListItem>
 
                     <ImageListItem key={img4}>
                     <img onClick = { navigateToChest } src={img4} alt={title4}/>
-                    <ImageListItemBar title={title4}/>
+                    <ImageListItemBar
+                        sx={{
+                            background:
+                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                            }} 
+                        title={title4}
+                        />
                     </ImageListItem>
 
                     <ImageListItem key={img5}>
                     <img onClick = { navigateToCardio } src={img5} alt={title5}/>
-                    <ImageListItemBar title={title5}/>
+                    <ImageListItemBar 
+                        sx={{
+                            background:
+                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                            }} 
+                        title={title5}
+                        />
                     </ImageListItem>
 
                     <ImageListItem key={img6}>
                     <img onClick = { navigateToQuads } src={img6} alt={title6}/>
-                    <ImageListItemBar title={title6}/>
+                    <ImageListItemBar
+                        sx={{
+                            background:
+                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                            }} 
+                        title={title6}
+                        />
                     </ImageListItem>
 
                 </ImageList>
